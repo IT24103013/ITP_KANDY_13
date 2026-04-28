@@ -832,6 +832,18 @@
     height: 16px;
 }
 
+.icon-action.track:hover {
+    border-color: #10b981;
+    color: #10b981;
+    background-color: #f0fdf4;
+}
+
+.icon-action.report:hover {
+    border-color: #1a6aa0;
+    color: #1a6aa0;
+    background-color: #f0f7ff;
+}
+
 .icon-action.edit:hover {
     border-color: #c9a052;
     color: #c9a052;
@@ -981,7 +993,7 @@
     background-color: #161a22;
     border-radius: 12px;
     padding: 24px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -1057,6 +1069,7 @@
     border: 1px solid #4a5270;
     color: #fff;
 }
+
 .inq-outline:hover {
     border-color: #fff;
 }
@@ -1066,6 +1079,7 @@
     border: none;
     color: #000;
 }
+
 .inq-gold:hover {
     background-color: #c9a052;
 }
@@ -1126,6 +1140,7 @@
     font-weight: 600;
     cursor: pointer;
 }
+
 .inq-del-btn:hover {
     background: #ef4444;
     color: #fff;
@@ -1136,7 +1151,7 @@
     background-color: #fff;
     border-radius: 16px;
     padding: 30px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
     position: sticky;
     top: 20px;
 }
@@ -1186,6 +1201,7 @@
     font-weight: 700;
     color: #1a1a1a;
 }
+
 .stat-val.gold {
     color: #c9a052;
 }
@@ -1255,6 +1271,7 @@
     cursor: pointer;
     transition: background 0.2s;
 }
+
 .generate-pdf-btn:hover {
     background-color: #0f1117;
 }
@@ -1262,7 +1279,10 @@
 /* ---- Inquiries Modal ---- */
 .inq-modal-overlay {
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(10, 11, 15, 0.85);
     display: flex;
     align-items: center;
@@ -1298,7 +1318,8 @@
     margin-bottom: 8px;
 }
 
-.inq-select, .inq-textarea {
+.inq-select,
+.inq-textarea {
     background-color: #161a22;
     border: 1px solid #282c38;
     border-radius: 8px;
@@ -1309,11 +1330,14 @@
     width: 100%;
     outline: none;
 }
+
 .inq-textarea {
     resize: none;
     min-height: 100px;
 }
-.inq-select:focus, .inq-textarea:focus {
+
+.inq-select:focus,
+.inq-textarea:focus {
     border-color: #e2b761;
 }
 
@@ -1344,6 +1368,7 @@
     font-weight: 600;
     cursor: pointer;
 }
+
 /* ============================================
    ANALYTICS SECTION
    ============================================ */
@@ -1415,6 +1440,602 @@
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* The pop up form */
+
+/* Target only the Add Vehicle modal */
+.modal-overlay .admin-modal {
+    width: 1100px !important;
+    max-width: 90vw !important;
+    max-height: 85vh !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+}
+
+/* Make the form scrollable internally if needed, not the whole modal */
+.modal-overlay .admin-modal .admin-form {
+    flex: 1 !important;
+    overflow-y: auto !important;
+    padding: 24px 28px !important;
+    max-height: calc(85vh - 120px) !important;
+}
+
+/* Custom scrollbar for form content */
+.modal-overlay .admin-modal .admin-form::-webkit-scrollbar {
+    width: 6px !important;
+}
+
+.modal-overlay .admin-modal .admin-form::-webkit-scrollbar-track {
+    background: #f0f0f0 !important;
+    border-radius: 3px !important;
+}
+
+.modal-overlay .admin-modal .admin-form::-webkit-scrollbar-thumb {
+    background: #c9a052 !important;
+    border-radius: 3px !important;
+}
+
+/* Compact form grid - 3 columns for landscape layout */
+.modal-overlay .admin-modal .admin-form .form-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 16px 20px !important;
+    margin-bottom: 0 !important;
+}
+
+/* Make description and image span full width */
+.modal-overlay .admin-modal .admin-form .form-group:has(textarea),
+.modal-overlay .admin-modal .admin-form .form-group:has(input[type="file"]) {
+    grid-column: span 3 !important;
+}
+
+/* Compact form groups */
+.modal-overlay .admin-modal .admin-form .form-group {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+    margin-bottom: 0 !important;
+}
+
+/* Smaller labels */
+.modal-overlay .admin-modal .admin-form .form-group label {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #c9a052 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* Compact inputs */
+.modal-overlay .admin-modal .admin-form .form-group input,
+.modal-overlay .admin-modal .admin-form .form-group select {
+    padding: 10px 12px !important;
+    background-color: #f8f9fa !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 8px !important;
+    font-size: 13px !important;
+}
+
+/* Compact textarea */
+.modal-overlay .admin-modal .admin-form .form-group textarea {
+    padding: 10px 12px !important;
+    min-height: 70px !important;
+    font-size: 13px !important;
+}
+
+/* File input compact */
+.modal-overlay .admin-modal .admin-form .form-group input[type="file"] {
+    padding: 8px !important;
+    font-size: 12px !important;
+}
+
+/* Modal header - compact */
+.modal-overlay .admin-modal .modal-header {
+    padding: 16px 28px !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+}
+
+.modal-overlay .admin-modal .modal-header h3 {
+    font-size: 20px !important;
+    margin: 0 !important;
+}
+
+/* Modal footer - compact */
+.modal-overlay .admin-modal .modal-footer {
+    padding: 16px 28px !important;
+    border-top: 1px solid #e0e0e0 !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    gap: 12px !important;
+}
+
+.modal-overlay .admin-modal .modal-footer .action-btn {
+    padding: 10px 24px !important;
+    min-width: 120px !important;
+    font-size: 14px !important;
+}
+
+/* Focus states */
+.modal-overlay .admin-modal .admin-form .form-group input:focus,
+.modal-overlay .admin-modal .admin-form .form-group select:focus,
+.modal-overlay .admin-modal .admin-form .form-group textarea:focus {
+    outline: none !important;
+    border-color: #c9a052 !important;
+    box-shadow: 0 0 0 2px rgba(201, 160, 82, 0.1) !important;
+}
+
+/* File input button styling */
+.modal-overlay .admin-modal .admin-form .form-group input[type="file"]::file-selector-button {
+    background-color: #c9a052 !important;
+    color: #161b27 !important;
+    border: none !important;
+    padding: 6px 14px !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    margin-right: 10px !important;
+    cursor: pointer !important;
+}
+
+/* Select dropdown arrow */
+.modal-overlay .admin-modal .admin-form .form-group select {
+    cursor: pointer !important;
+    appearance: none !important;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 10px center !important;
+    background-size: 14px !important;
+}
+
+/* Responsive: Tablet */
+@media (max-width: 900px) {
+    .modal-overlay .admin-modal .admin-form .form-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .modal-overlay .admin-modal .admin-form .form-group:has(textarea),
+    .modal-overlay .admin-modal .admin-form .form-group:has(input[type="file"]) {
+        grid-column: span 2 !important;
+    }
+}
+
+/* Responsive: Mobile */
+@media (max-width: 600px) {
+    .modal-overlay .admin-modal {
+        width: 95% !important;
+        max-height: 90vh !important;
+    }
+
+    .modal-overlay .admin-modal .admin-form .form-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+
+    .modal-overlay .admin-modal .admin-form .form-group:has(textarea),
+    .modal-overlay .admin-modal .admin-form .form-group:has(input[type="file"]) {
+        grid-column: span 1 !important;
+    }
+
+    .modal-overlay .admin-modal .modal-footer {
+        flex-direction: column-reverse !important;
+    }
+
+    .modal-overlay .admin-modal .modal-footer .action-btn {
+        width: 100% !important;
+    }
+
+    .modal-overlay .admin-modal .modal-header {
+        padding: 12px 20px !important;
+    }
+
+    .modal-overlay .admin-modal .admin-form {
+        padding: 16px 20px !important;
+    }
+}
+
+/*analytics styles*/
+/* ============================================
+   ANALYTICS PAGE - DARK THEME METRIC BOXES & CHARTS
+   Fixes styling for analytics dashboard
+   ============================================ */
+
+/* Make all metric cards in analytics dark */
+.analytics-container .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.analytics-container .metric-card {
+    background: linear-gradient(145deg, #0f1117, #161b27) !important;
+    border: 1px solid #2a2f3e !important;
+    border-radius: 16px !important;
+    padding: 24px !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.analytics-container .metric-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    border-color: rgba(201, 160, 82, 0.3) !important;
+}
+
+/* Metric card text colors for dark theme */
+.analytics-container .metric-card .metric-header {
+    margin-bottom: 16px;
+}
+
+.analytics-container .metric-card .metric-title {
+    color: #8a94a8 !important;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.analytics-container .metric-card .metric-value {
+    color: #c9a052 !important;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.analytics-container .metric-card .metric-trend {
+    color: #6c757d !important;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.analytics-container .metric-card .metric-trend.up {
+    color: #4ade80 !important;
+}
+
+.analytics-container .metric-card .metric-trend.down {
+    color: #f87171 !important;
+}
+
+/* Metric icons */
+.analytics-container .metric-card .metric-icon {
+    font-size: 28px;
+}
+
+/* Special styling for gold border card (revenue) */
+.analytics-container .gold-border {
+    border: 1px solid rgba(201, 160, 82, 0.4) !important;
+    background: linear-gradient(145deg, #0f1117, #1a1f2a) !important;
+}
+
+.analytics-container .gold-border .metric-value {
+    color: #c9a052 !important;
+    font-size: 36px !important;
+}
+
+/* Analytics Details Grid - Two large boxes */
+.analytics-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-top: 40px;
+}
+
+/* Chart Cards - Dark and elegant */
+.analytics-container .chart-card {
+    background: linear-gradient(145deg, #0f1117, #161b27) !important;
+    border: 1px solid #2a2f3e !important;
+    border-radius: 20px !important;
+    padding: 28px !important;
+    transition: all 0.2s ease;
+}
+
+.analytics-container .chart-card:hover {
+    border-color: rgba(201, 160, 82, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.analytics-container .chart-card h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(201, 160, 82, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.analytics-container .chart-card h3::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background-color: #c9a052;
+    border-radius: 2px;
+}
+
+/* Stat list items */
+.analytics-container .stat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.analytics-container .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 0;
+}
+
+.analytics-container .stat-item span:first-child {
+    width: 110px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #e0e0e0;
+}
+
+/* Bar container */
+.analytics-container .stat-bar-container {
+    flex: 1;
+    height: 10px;
+    background-color: #1e2130;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Bar styling */
+.analytics-container .stat-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #c9a052, #e0b96a);
+    border-radius: 6px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated shine effect on bars */
+.analytics-container .stat-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.analytics-container .stat-bar.gold {
+    background: linear-gradient(90deg, #c9a052, #e4c280);
+}
+
+/* Stat values */
+.analytics-container .stat-item span:last-child {
+    min-width: 45px;
+    text-align: right;
+    font-weight: 700;
+    color: #c9a052;
+    font-size: 14px;
+}
+
+/* Reports Section */
+.analytics-container .reports-section-card {
+    background: linear-gradient(145deg, #0f1117, #161b27) !important;
+    border: 1px solid #2a2f3e !important;
+    border-radius: 20px !important;
+    padding: 28px !important;
+    margin-top: 40px;
+}
+
+.analytics-container .reports-section-card h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(201, 160, 82, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.analytics-container .reports-section-card h3::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background-color: #c9a052;
+    border-radius: 2px;
+}
+
+/* Report buttons */
+.analytics-container .report-buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.analytics-container .report-gen-btn {
+    background-color: #1a1f2a !important;
+    border: 1px solid #2a2f3e !important;
+    border-radius: 12px !important;
+    padding: 14px 20px !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.analytics-container .report-gen-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    background-color: #1e2432 !important;
+    border-color: #c9a052 !important;
+}
+
+/* Color variants for report buttons */
+.analytics-container .report-gen-btn:first-child {
+    color: #c9a052 !important;
+    border-color: rgba(201, 160, 82, 0.3) !important;
+}
+
+.analytics-container .report-gen-btn:nth-child(2) {
+    color: #4ade80 !important;
+    border-color: rgba(74, 222, 128, 0.3) !important;
+}
+
+.analytics-container .report-gen-btn:nth-child(3) {
+    color: #facc15 !important;
+    border-color: rgba(250, 204, 21, 0.3) !important;
+}
+
+.analytics-container .report-gen-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .analytics-container .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .analytics-details-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .analytics-container .report-buttons-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .analytics-container .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .analytics-container .metric-card {
+        padding: 18px !important;
+    }
+
+    .analytics-container .chart-card {
+        padding: 20px !important;
+    }
+
+    .analytics-container .stat-item {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .analytics-container .stat-item span:first-child {
+        width: 100%;
+    }
+
+    .analytics-container .stat-bar-container {
+        width: 100%;
+        order: 1;
+    }
+
+    .analytics-container .stat-item span:last-child {
+        order: 2;
+    }
+}
+
+/* Animation for metrics cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.analytics-container .metric-card {
+    animation: fadeInUp 0.4s ease-out forwards;
+    opacity: 0;
+}
+
+.analytics-container .metric-card:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.analytics-container .metric-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.analytics-container .metric-card:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+.analytics-container .metric-card:nth-child(4) {
+    animation-delay: 0.2s;
+}
+
+/* Loading state styling */
+.analytics-container .loading-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    color: #c9a052;
+    background: linear-gradient(145deg, #0f1117, #161b27);
+    border-radius: 16px;
+    margin: 20px;
+}
+
+/* Empty state styling */
+.analytics-container .empty-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    color: #8a94a8;
+    background: linear-gradient(145deg, #0f1117, #161b27);
+    border-radius: 16px;
+    margin: 20px;
 }

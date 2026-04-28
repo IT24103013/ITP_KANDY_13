@@ -146,6 +146,16 @@ CREATE TABLE inquiries (
                            FOREIGN KEY (admin_id) REFERENCES admin(user_id) ON DELETE SET NULL
 );
 
+-- 12. Notification
+CREATE TABLE notifications (
+                               id INT AUTO_INCREMENT PRIMARY KEY,
+                               message VARCHAR(500) NOT NULL,
+                               type VARCHAR(50) NOT NULL,
+                               is_read BOOLEAN NOT NULL DEFAULT FALSE,
+                               created_at DATETIME NOT NULL,
+                               user_id INT NULL
+);
+
 
 -- 1. (Users & Roles)
 SELECT * FROM users;
@@ -167,6 +177,7 @@ SELECT * FROM payments;
 -- 5. (Feedback & Support)
 SELECT * FROM reviews;
 SELECT * FROM inquiries;
+SELECT * FROM notifications;
 
 -- 1. Users
 INSERT INTO users (full_name, email, password, nic, role, phone) VALUES
@@ -184,10 +195,90 @@ INSERT INTO customer (user_id, license_url) VALUES
                                                 (3, 'https://example.com/license/nimali.jpg'),
                                                 (4, 'https://example.com/license/ruwan.jpg');
 
--- 4. Vehicle_Rent
-INSERT INTO vehicle_rent (name, type, year, daily_rate, status, description, mileage_limit, extra_mileage_charge, avg_fuel_efficiency, gear_type, seats, fuel_type, admin_id) VALUES
-                                                                                                                                                                                  ('Suzuki Alto', 'Hatchback', 2018, 5000.00, 'Available', 'Economical car for city rides. Good condition.', 100, 50.00, '18 km/l', 'Manual', 4, 'Petrol', 1),
-                                                                                                                                                                                  ('Toyota Premio', 'Sedan', 2019, 15000.00, 'Available', 'Luxury and comfortable sedan for long trips.', 100, 100.00, '12 km/l', 'Auto', 5, 'Petrol', 1),
-                                                                                                                                                                                  ('Toyota KDH Van', 'Van', 2016, 25000.00, 'Reserved', 'Spacious van for family trips and tours.', 150, 150.00, '10 km/l', 'Manual', 12, 'Diesel', 1),
-                                                                                                                                                                                  ('Suzuki Wagon R', 'Hatchback', 2017, 8000.00, 'Rented', 'Hybrid car with excellent fuel efficiency.', 100, 60.00, '20 km/l', 'Auto', 4, 'Hybrid', 1),
-                                                                                                                                                                                  ('Honda Vezel', 'SUV', 2018, 12000.00, 'Available', 'Compact SUV for all terrains. High comfort.', 100, 120.00, '15 km/l', 'Auto', 5, 'Hybrid', 1);
+-- 1. Suzuki Alto
+INSERT INTO vehicle_rent (name, type, year, daily_rate, status, description, mileage_limit, extra_mileage_charge, avg_fuel_efficiency, gear_type, seats, fuel_type, admin_id)
+VALUES ('Suzuki Alto', 'Hatchback', 2018, 5000.00, 'Available', 'Economical car for city rides. Good condition.', 100, 50.00, '18 km/l', 'Manual', 4, 'Petrol', 1);
+
+SET @alto_id = LAST_INSERT_ID();
+
+INSERT INTO vehicle_images (img_url, vehicle_rent_id)
+VALUES ('/images/alto.png', @alto_id);
+
+
+-- 2. Toyota Premio
+INSERT INTO vehicle_rent (name, type, year, daily_rate, status, description, mileage_limit, extra_mileage_charge, avg_fuel_efficiency, gear_type, seats, fuel_type, admin_id)
+VALUES ('Toyota Premio', 'Sedan', 2019, 15000.00, 'Available', 'Luxury and comfortable sedan for long trips.', 100, 100.00, '12 km/l', 'Auto', 5, 'Petrol', 1);
+
+SET @premio_id = LAST_INSERT_ID();
+
+INSERT INTO vehicle_images (img_url, vehicle_rent_id)
+VALUES ('/images/premio.png', @premio_id);
+
+
+-- 3. Toyota KDH Van
+INSERT INTO vehicle_rent (name, type, year, daily_rate, status, description, mileage_limit, extra_mileage_charge, avg_fuel_efficiency, gear_type, seats, fuel_type, admin_id)
+VALUES ('Toyota KDH Van', 'Van', 2016, 25000.00, 'Reserved', 'Spacious van for family trips and tours.', 150, 150.00, '10 km/l', 'Manual', 12, 'Diesel', 1);
+
+SET @kdh_id = LAST_INSERT_ID();
+
+INSERT INTO vehicle_images (img_url, vehicle_rent_id)
+VALUES ('/images/ToyotaKDH.png', @kdh_id);
+
+
+-- 4. Suzuki Wagon R
+INSERT INTO vehicle_rent (name, type, year, daily_rate, status, description, mileage_limit, extra_mileage_charge, avg_fuel_efficiency, gear_type, seats, fuel_type, admin_id)
+VALUES ('Suzuki Wagon R', 'Hatchback', 2017, 8000.00, 'Rented', 'Hybrid car with excellent fuel efficiency.', 100, 60.00, '20 km/l', 'Auto', 4, 'Hybrid', 1);
+
+SET @wagon_r_id = LAST_INSERT_ID();
+
+INSERT INTO vehicle_images (img_url, vehicle_rent_id)
+VALUES ('/images/SuzukiWagonR.png', @wagon_r_id);
+
+
+-- 5. Honda Vezel
+INSERT INTO vehicle_rent (name, type, year, daily_rate, status, description, mileage_limit, extra_mileage_charge, avg_fuel_efficiency, gear_type, seats, fuel_type, admin_id)
+VALUES ('Honda Vezel', 'SUV', 2018, 12000.00, 'Available', 'Compact SUV for all terrains. High comfort.', 100, 120.00, '15 km/l', 'Auto', 5, 'Hybrid', 1);
+
+SET @vezel_id = LAST_INSERT_ID();
+
+INSERT INTO vehicle_images (img_url, vehicle_rent_id)
+VALUES ('/images/vezel.png', @vezel_id);
+
+
+
+
+-- Payments
+DELETE FROM payments;
+
+-- Bookings
+DELETE FROM bookings;
+
+--
+DELETE FROM vehicle_rent;
+
+UPDATE vehicle_rent SET status = 'Available' ;
+
+
+
+-- add created-at
+ALTER TABLE bookings ADD COLUMN created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+
+CREATE TABLE password_reset_tokens (
+                                       id INT AUTO_INCREMENT PRIMARY KEY,
+                                       token VARCHAR(255) NOT NULL UNIQUE,
+                                       user_id INT NOT NULL,
+                                       expiry_date DATETIME NOT NULL,
+                                       CONSTRAINT fk_password_reset_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+select * from password_reset_tokens;
+
+
+
+
+
+
+
+
+

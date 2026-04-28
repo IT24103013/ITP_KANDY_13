@@ -1,5 +1,6 @@
+// HomePage.jsx
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './HomePage.css';
 import PromoBanner from '../Promotion/PromoBanner';
 
@@ -95,6 +96,10 @@ function HomePage() {
                         </button>
                     </div>
                 </div>
+                {/* Floating scroll indicator */}
+                <div className="scroll-indicator">
+                    <span></span>
+                </div>
             </section>
 
             {/* ── STATS BAR ── */}
@@ -107,10 +112,50 @@ function HomePage() {
                 ))}
             </section>
 
+
+
             {/* ── FEATURE CARDS ── */}
             <section className="features-section">
+                <div className="features-header">
+                    <span className="features-eyebrow">Our Services</span>
+                    <h2 className="features-title">Drive with confidence, <span className="features-title-gold">your journey starts here</span></h2>
+                    <p className="features-subtitle">Whether you need a temporary ride or a permanent companion, we offer flexible solutions tailored to you.</p>
+                </div>
+
+                {/* ── ADDITIONAL TRUST SECTION ── */}
+                <section className="trust-section">
+                    <div className="trust-inner">
+                        <div className="trust-content">
+                            <span className="trust-eyebrow">Why Choose Us</span>
+                            <h3 className="trust-title">Seamless <span className="trust-title-gold">vehicle management</span> at your fingertips</h3>
+                            <p className="trust-text">From instant quotes to comprehensive support, we've engineered every detail to make your experience effortless.</p>
+                        </div>
+                        <div className="trust-badges">
+                            <div className="trust-badge">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
+                                <span>Secure Booking</span>
+                            </div>
+                            <div className="trust-badge">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M12 6v6l4 2" />
+                                </svg>
+                                <span>24/7 Support</span>
+                            </div>
+                            <div className="trust-badge">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                                    <path d="M20 12V8H4v4M12 4v4M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+                                </svg>
+                                <span>Free Cancellation</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <div className="features-grid">
-                    {features.map((f, i) => (
+                    {features.slice(1, 2).map((f, i) => (
                         <div key={i} className="feature-card">
                             <div className="feature-icon-wrap">
                                 {f.icon}
@@ -127,6 +172,8 @@ function HomePage() {
                     ))}
                 </div>
             </section>
+
+
         </div>
     );
 }

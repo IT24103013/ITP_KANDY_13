@@ -79,7 +79,7 @@ function AdminAnalytics() {
             doc.text("Samarasinghe Motors", 14, 22);
             doc.setFontSize(14);
             doc.text("Reviews & Feedback Performance Report", 14, 30);
-            
+
             doc.setFontSize(11);
             doc.text(`Average Rating: ${data.overallAverage.toFixed(2)} / 5.0`, 14, 45);
             doc.text(`Total Reviews: ${data.totalReviews}`, 14, 51);
@@ -108,16 +108,16 @@ function AdminAnalytics() {
             const data = await response.json();
 
             const doc = new jsPDF();
-            
+
             // Branding
             doc.setFontSize(24);
             doc.setTextColor(22, 26, 34);
             doc.text("Samarasinghe Motors", 14, 22);
-            
+
             doc.setFontSize(14);
             doc.setTextColor(201, 160, 82); // Gold
             doc.text("Financial Statement & Revenue Analysis", 14, 30);
-            
+
             doc.setFontSize(9);
             doc.setTextColor(100);
             doc.text(`Reporting Period: Fiscal Year ${new Date().getFullYear()}`, 14, 38);
@@ -126,20 +126,20 @@ function AdminAnalytics() {
             // Summary Highlights
             doc.setFillColor(245, 246, 248);
             doc.rect(14, 50, 182, 35, 'F');
-            
+
             doc.setFontSize(11);
             doc.setTextColor(22, 26, 34);
             doc.text("EXECUTIVE SUMMARY", 20, 58);
-            
+
             doc.setFontSize(10);
             doc.text(`Total Gross Revenue (Approved):`, 20, 66);
             doc.setFont(undefined, 'bold');
-            doc.text(`Rs. ${data.totalGrossRevenue.toLocaleString(undefined, {minimumFractionDigits: 2})}`, 85, 66);
-            
+            doc.text(`Rs. ${data.totalGrossRevenue.toLocaleString(undefined, { minimumFractionDigits: 2 })}`, 85, 66);
+
             doc.setFont(undefined, 'normal');
             doc.text(`Total Transactions Tracked:`, 20, 72);
             doc.text(`${data.allPayments.length}`, 85, 72);
-            
+
             const approvedCount = data.statusCount["APPROVED"] || 0;
             doc.text(`Approval Success Rate:`, 20, 78);
             const rate = data.allPayments.length > 0 ? (approvedCount / data.allPayments.length * 100).toFixed(1) : 0;
@@ -150,9 +150,9 @@ function AdminAnalytics() {
             doc.text("Revenue Breakdown by Payment Status", 14, 98);
             const statusColumns = ["Payment Status", "Transaction Count", "Subtotal"];
             const statusRows = Object.entries(data.statusCount).map(([status, count]) => [
-                status, 
-                count, 
-                `Rs. ${(data.statusRevenue[status] || 0).toLocaleString(undefined, {minimumFractionDigits: 2})}`
+                status,
+                count,
+                `Rs. ${(data.statusRevenue[status] || 0).toLocaleString(undefined, { minimumFractionDigits: 2 })}`
             ]);
 
             autoTable(doc, {
@@ -166,13 +166,13 @@ function AdminAnalytics() {
             // Detailed Transactions (New Page if needed)
             const currentY = doc.lastAutoTable.finalY + 15;
             doc.text("Detailed Transaction History", 14, currentY);
-            
+
             const transColumns = ["ID", "Booking ID", "Date", "Amount", "Status"];
             const transRows = data.allPayments.map(p => [
-                `#${p.paymentId}`, 
-                `#${p.booking?.bookingId || 'N/A'}`, 
-                p.paymentDate, 
-                `Rs. ${p.amount.toLocaleString()}`, 
+                `#${p.paymentId}`,
+                `#${p.booking?.bookingId || 'N/A'}`,
+                p.paymentDate,
+                `Rs. ${p.amount.toLocaleString()}`,
                 p.status
             ]);
 
@@ -237,44 +237,14 @@ function AdminAnalytics() {
                 </div>
             </div>
 
-            <div className="analytics-details-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginTop: '40px' }}>
-                <div className="chart-card dark-card">
-                    <h3>Vehicle Inventory by Type</h3>
-                    <div className="stat-list">
-                        {Object.entries(summary.vehiclesByType).map(([type, count]) => (
-                            <div key={type} className="stat-item">
-                                <span>{type}</span>
-                                <div className="stat-bar-container">
-                                    <div className="stat-bar" style={{ width: `${(count / summary.totalVehicles) * 100}%` }}></div>
-                                </div>
-                                <span>{count}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
 
-                <div className="chart-card dark-card">
-                    <h3>Booking Status Distribution</h3>
-                    <div className="stat-list">
-                        {Object.entries(summary.bookingsByStatus).map(([status, count]) => (
-                            <div key={status} className="stat-item">
-                                <span>{status}</span>
-                                <div className="stat-bar-container">
-                                    <div className="stat-bar gold" style={{ width: `${(count / summary.totalBookings) * 100}%` }}></div>
-                                </div>
-                                <span>{count}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
 
             {/* Reports Section */}
             <div className="reports-section-card" style={{ marginTop: '40px', padding: '24px', backgroundColor: '#0f1117', borderRadius: '16px', border: '1px solid #1e2130' }}>
                 <h3 style={{ fontFamily: 'Rajdhani', color: '#fff', marginBottom: '20px', textTransform: 'uppercase', letterSpacing: '1px' }}>Quick Reports & Exports</h3>
                 <div className="report-buttons-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '20px' }}>
-                    <button 
-                        className="report-gen-btn" 
+                    <button
+                        className="report-gen-btn"
                         onClick={handleGenerateUserReport}
                         disabled={isGenerating}
                         style={{
@@ -299,8 +269,8 @@ function AdminAnalytics() {
                         {isGenerating ? "Generating..." : "Download User Report"}
                     </button>
 
-                    <button 
-                        className="report-gen-btn" 
+                    <button
+                        className="report-gen-btn"
                         onClick={handleGenerateReviewReport}
                         disabled={isGeneratingReview}
                         style={{
@@ -324,8 +294,8 @@ function AdminAnalytics() {
                         {isGeneratingReview ? "Generating..." : "Download Review Report"}
                     </button>
 
-                    <button 
-                        className="report-gen-btn" 
+                    <button
+                        className="report-gen-btn"
                         onClick={handleGenerateFinanceReport}
                         disabled={isGeneratingFinance}
                         style={{

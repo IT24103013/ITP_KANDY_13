@@ -369,6 +369,22 @@ function AdminDashboard() {
         }
     };
 
+    const handleViewCustomerReport = async (userId) => {
+        try {
+            const response = await apiFetch(`/api/reports/customer/${userId}/pdf`);
+            if (response.ok) {
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+                window.open(url, '_blank');
+            } else {
+                showMessage("Failed to generate report", true);
+            }
+        } catch (error) {
+            console.error("Error generating report:", error);
+            showMessage("Network Error!", true);
+        }
+    };
+
     const handleUpdateUserByAdmin = async (e) => {
         e.preventDefault();
         try {
@@ -974,6 +990,21 @@ function AdminDashboard() {
                                                     </td>
                                                     <td>
                                                         <div className="table-actions">
+                                                            {u.role?.toUpperCase() === 'CUSTOMER' && (
+                                                                <button
+                                                                    className="icon-action report"
+                                                                    onClick={() => handleViewCustomerReport(u.userId)}
+                                                                    title="View 90-Day Activity Report"
+                                                                >
+                                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                                                        <polyline points="10 9 9 9 8 9"></polyline>
+                                                                    </svg>
+                                                                </button>
+                                                            )}
                                                             <button
                                                                 className="icon-action edit"
                                                                 onClick={() => { setSelectedUser(u); setShowEditModal(true); }}
@@ -1150,6 +1181,16 @@ function AdminDashboard() {
                                                         <td className="text-gold fw-bold">Rs. {v.dailyRate}</td>
                                                         <td>
                                                             <div className="table-actions">
+                                                                <button
+                                                                    className="icon-action track"
+                                                                    onClick={() => window.open('https://en.aika168.com/Monitor.aspx', '_blank')}
+                                                                    title="Track Vehicle"
+                                                                >
+                                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                                        <circle cx="12" cy="10" r="3"></circle>
+                                                                    </svg>
+                                                                </button>
                                                                 <button className="icon-action edit" onClick={() => {
                                                                     setVehicleFormData(v);
                                                                     setVehicleImage(null);
@@ -1246,6 +1287,16 @@ function AdminDashboard() {
                                                         </td>
                                                         <td>
                                                             <div className="table-actions">
+                                                                <button
+                                                                    className="icon-action track"
+                                                                    onClick={() => window.open('https://en.aika168.com/Monitor.aspx', '_blank')}
+                                                                    title="Track Vehicle"
+                                                                >
+                                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                                        <circle cx="12" cy="10" r="3"></circle>
+                                                                    </svg>
+                                                                </button>
                                                                 <button className="icon-action edit" onClick={() => {
                                                                     setSaleFormData(v);
                                                                     setSaleImage(null);

@@ -50,12 +50,20 @@ public class VehicleService {
     public List<VehicleSaleDTO> searchAvailableVehiclesDTO(String brand, String model, String condition,
                                                          String transmission, Double maxPrice, Integer yearReg,
                                                          String bodyType, Integer mileage) {
-        
         java.math.BigDecimal maxBigDecimal = maxPrice != null ? java.math.BigDecimal.valueOf(maxPrice) : null;
-        List<com.samarasinghemotors.vehiclesystem.modules.vehicle.entity.VehicleSale> vehicles = 
+        List<com.samarasinghemotors.vehiclesystem.modules.vehicle.entity.VehicleSale> vehicles =
             vehicleSaleRepository.searchAvailableVehicles(brand, model, condition, transmission, maxBigDecimal, yearReg, bodyType, mileage);
-            
         return vehicles.stream().map(this::mapToDTO).collect(Collectors.toList());
+    }
+
+    public List<VehicleRent> getAllAvailableRentVehicles() {
+        return vehicleRentRepository.findAllAvailableWithImages();
+    }
+
+    public List<VehicleRent> searchAvailableRentVehicles(String name, String type, String gearType,
+                                                       String fuelType, Double maxPrice, Integer seats) {
+        java.math.BigDecimal maxBigDecimal = maxPrice != null ? java.math.BigDecimal.valueOf(maxPrice) : null;
+        return vehicleRentRepository.searchAvailableVehicles(name, type, gearType, fuelType, maxBigDecimal, seats);
     }
 
     public VehicleSaleDTO getVehicleSaleDTOById(Integer id) {

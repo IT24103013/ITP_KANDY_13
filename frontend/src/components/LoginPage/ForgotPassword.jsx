@@ -26,12 +26,12 @@ function ForgotPassword() {
 
             const data = await res.json();
             if (res.ok) {
-                setMessage(data.message);
+                setMessage(data.message || 'If an account exists, a reset link has been sent.');
             } else {
-                setError(data.message || 'Something went wrong.');
+                setError(data.message || 'Something went wrong. Please try again.');
             }
         } catch (err) {
-            setError('Failed to connect to the server.');
+            setError('Failed to connect to the server. Please check your connection.');
         } finally {
             setLoading(false);
         }
@@ -39,29 +39,44 @@ function ForgotPassword() {
 
     return (
         <div className="login-container">
-            <div className="login-box">
+            <div className="login-card">
                 <div className="login-header">
+                    <div style={{ fontSize: '40px', marginBottom: '10px' }}>🔐</div>
                     <h2>Forgot Password</h2>
-                    <p>Enter your email to receive a reset link</p>
+                    <p>No worries! Enter your email below and we'll send you a link to reset your password.</p>
                 </div>
 
-                {message && <div className="alert-success" style={{ color: '#4ade80', marginBottom: '20px', textAlign: 'center' }}>{message}</div>}
-                {error && <div className="alert-error" style={{ color: '#ef4444', marginBottom: '20px', textAlign: 'center' }}>{error}</div>}
+                {message && (
+                    <div className="success-message" style={{ 
+                        backgroundColor: '#f0fdf4', 
+                        color: '#166534', 
+                        padding: '12px', 
+                        borderRadius: '6px', 
+                        fontSize: '14px', 
+                        marginBottom: '20px', 
+                        textAlign: 'center',
+                        border: '1px solid #bbf7d0'
+                    }}>
+                        {message}
+                    </div>
+                )}
+                
+                {error && <div className="error-message">{error}</div>}
 
-                <form onSubmit={handleSubmit}>
-                    <div className="input-group">
+                <form onSubmit={handleSubmit} className="login-form">
+                    <div className="form-group">
                         <label>Email Address</label>
                         <input 
                             type="email" 
-                            placeholder="yourname@example.com"
+                            placeholder="Enter your registered email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required 
                         />
                     </div>
 
-                    <button type="submit" className="login-btn" disabled={loading}>
-                        {loading ? 'Sending...' : 'Send Reset Link'}
+                    <button type="submit" className="login-submit-btn" disabled={loading}>
+                        {loading ? 'Sending Request...' : 'Send Reset Link'}
                     </button>
                 </form>
 

@@ -46,13 +46,37 @@
     margin: 0;
 }
 
+/* ---- Main Content Layout (Filter + Grid) ---- */
+.gallery-main-content {
+    display: flex;
+    gap: 28px;
+    max-width: 1300px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.gallery-right {
+    flex: 1;
+    min-width: 0;
+}
+
+/* ---- Filter Results Bar ---- */
+.filter-results-bar {
+    background: rgba(201, 160, 82, 0.1);
+    border: 1px solid rgba(201, 160, 82, 0.2);
+    border-radius: 8px;
+    padding: 10px 16px;
+    margin-bottom: 20px;
+    color: #c9a052;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
 /* ---- Vehicle Grid ---- */
 .vehicle-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 24px;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 /* ---- Vehicle Card ---- */
@@ -307,15 +331,31 @@
 }
 
 /* ---- Empty State ---- */
-.gallery-empty {
-    grid-column: 1 / -1;
+.gallery-empty,
+.empty-gallery {
     text-align: center;
     padding: 64px 24px;
     color: #4a5270;
     font-size: 15px;
 }
 
+.empty-gallery h3 {
+    color: #8a94a8;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.empty-gallery p {
+    color: #4a5270;
+}
+
 /* ---- Responsive ---- */
+@media (max-width: 900px) {
+    .gallery-main-content {
+        flex-direction: column;
+    }
+}
+
 @media (max-width: 768px) {
     .gallery-layout {
         padding: 36px 20px;

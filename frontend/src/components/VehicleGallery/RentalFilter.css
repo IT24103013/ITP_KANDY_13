@@ -1,0 +1,144 @@
+.rental-filter-panel {
+    background: #1a1a2e;
+    border: 1px solid rgba(201, 160, 82, 0.25);
+    border-radius: 16px;
+    padding: 24px;
+    width: 280px;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+
+.filter-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(201, 160, 82, 0.2);
+}
+
+.filter-header h3 {
+    margin: 0;
+    color: #c9a052;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.filter-icon {
+    font-size: 1.2rem;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.filter-group label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #8a8a9a;
+    text-transform: uppercase;
+}
+
+.filter-input,
+.filter-select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    color: #e0e0e0;
+    padding: 10px 12px;
+    font-size: 0.88rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.filter-input::placeholder {
+    color: #555570;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+    border-color: #c9a052;
+    box-shadow: 0 0 0 3px rgba(201, 160, 82, 0.15);
+}
+
+.filter-select option {
+    background: #1a1a2e;
+    color: #e0e0e0;
+}
+
+.filter-row {
+    display: flex;
+    gap: 12px;
+}
+
+.input-error {
+    border-color: #e05c5c !important;
+}
+
+.error-msg {
+    color: #e05c5c;
+    font-size: 0.75rem;
+    margin-top: 2px;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.filter-reset-btn {
+    flex: 1;
+    padding: 11px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #a0a0b0;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-reset-btn:hover {
+    border-color: #c9a052;
+    color: #c9a052;
+}
+
+.filter-apply-btn {
+    flex: 2;
+    padding: 11px;
+    background: linear-gradient(135deg, #c9a052, #e8c070);
+    border: none;
+    border-radius: 8px;
+    color: #0d0d1a;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+}
+
+.filter-apply-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(201, 160, 82, 0.4);
+}
+
+@media (max-width: 900px) {
+    .rental-filter-panel {
+        width: 100%;
+        min-width: unset;
+        position: static;
+    }
+}

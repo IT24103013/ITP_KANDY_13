@@ -21,7 +21,7 @@ function ResetPassword() {
             validateToken();
         } else {
             setIsValidating(false);
-            setError('No token provided.');
+            setError('No reset token provided. Please request a new link.');
         }
     }, [token]);
 
@@ -32,10 +32,10 @@ function ResetPassword() {
                 setIsValidToken(true);
             } else {
                 const data = await res.json();
-                setError(data.message === 'expired' ? 'Link has expired. Please request a new one.' : 'Invalid reset link.');
+                setError(data.message === 'expired' ? 'This link has expired. For security, reset links are only valid for 1 hour.' : 'This reset link is invalid or has already been used.');
             }
         } catch (err) {
-            setError('Error connecting to server.');
+            setError('Unable to connect to the server. Please try again later.');
         } finally {
             setIsValidating(false);
         }
@@ -44,7 +44,7 @@ function ResetPassword() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (newPassword !== confirmPassword) {
-            setError('Passwords do not match.');
+            setError('Passwords do not match. Please try again.');
             return;
         }
 
@@ -60,67 +60,105 @@ function ResetPassword() {
 
             const data = await res.json();
             if (res.ok) {
-                setMessage('Password reset successfully! Redirecting to login...');
-                setTimeout(() => navigate('/login'), 4000);
+                setMessage('Your password has been reset successfully! Redirecting you to login...');
+                setTimeout(() => navigate('/login'), 3000);
             } else {
-                setError(data.message || 'Failed to reset password.');
+                setError(data.message || 'Failed to update password. Please request a new link.');
             }
         } catch (err) {
-            setError('Failed to connect to the server.');
+            setError('Network error. Please check your connection.');
         } finally {
             setLoading(false);
         }
     };
 
-    if (isValidating) return <div className="login-container"><div className="login-box"><p>Validating reset link...</p></div></div>;
+    if (isValidating) {
+        return (
+            <div className="login-container">
+                <div className="login-card" style={{ textAlign: 'center', padding: '60px' }}>
+                    <div className="loading-spinner" style={{ marginBottom: '20px' }}>⏳</div>
+                    <p>Verifying your security token...</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="login-container">
-            <div className="login-box">
+            <div className="login-card">
                 <div className="login-header">
+                    <div style={{ fontSize: '40px', marginBottom: '10px' }}>🛡️</div>
                     <h2>Reset Password</h2>
-                    <p>Enter your new secure password</p>
+                    <p>Create a new, strong password for your account.</p>
                 </div>
 
                 {!isValidToken ? (
-                    <div className="alert-error" style={{ color: '#ef4444', textAlign: 'center' }}>
+                    <div className="error-message" style={{ textAlign: 'center' }}>
                         <p>{error}</p>
-                        <Link to="/forgot-password" style={{ color: '#c9a052', display: 'block', marginTop: '15px' }}>Request New Link</Link>
+                        <Link to="/forgot-password" style={{ 
+                            display: 'inline-block', 
+                            marginTop: '15px', 
+                            color: '#c9a052', 
+                            fontWeight: '600',
+                            textDecoration: 'underline'
+                        }}>
+                            Request a new link
+                        </Link>
                     </div>
                 ) : (
                     <>
-                        {message && <div className="alert-success" style={{ color: '#4ade80', marginBottom: '20px', textAlign: 'center' }}>{message}</div>}
-                        {error && <div className="alert-error" style={{ color: '#ef4444', marginBottom: '20px', textAlign: 'center' }}>{error}</div>}
+                        {message && (
+                            <div className="success-message" style={{ 
+                                backgroundColor: '#f0fdf4', 
+                                color: '#166534', 
+                                padding: '12px', 
+                                borderRadius: '6px', 
+                                fontSize: '14px', 
+                                marginBottom: '20px', 
+                                textAlign: 'center',
+                                border: '1px solid #bbf7d0'
+                            }}>
+                                {message}
+                            </div>
+                        )}
+                        
+                        {error && <div className="error-message">{error}</div>}
 
-                        <form onSubmit={handleSubmit}>
-                            <div className="input-group">
+                        <form onSubmit={handleSubmit} className="login-form">
+                            <div className="form-group">
                                 <label>New Password</label>
                                 <input 
                                     type="password" 
-                                    placeholder="••••••••"
+                                    placeholder="Minimum 6 characters"
                                     value={newPassword}
                                     onChange={(e) => setNewPassword(e.target.value)}
                                     required 
+                                    minLength="6"
                                 />
                             </div>
 
-                            <div className="input-group">
+                            <div className="form-group">
                                 <label>Confirm New Password</label>
                                 <input 
                                     type="password" 
-                                    placeholder="••••••••"
+                                    placeholder="Repeat your new password"
                                     value={confirmPassword}
                                     onChange={(e) => setConfirmPassword(e.target.value)}
                                     required 
+                                    minLength="6"
                                 />
                             </div>
 
-                            <button type="submit" className="login-btn" disabled={loading}>
-                                {loading ? 'Updating...' : 'Update Password'}
+                            <button type="submit" className="login-submit-btn" disabled={loading}>
+                                {loading ? 'Saving Changes...' : 'Update Password'}
                             </button>
                         </form>
                     </>
                 )}
+                
+                <div className="login-footer">
+                    <p>Changed your mind? <Link to="/login">Back to Login</Link></p>
+                </div>
             </div>
         </div>
     );

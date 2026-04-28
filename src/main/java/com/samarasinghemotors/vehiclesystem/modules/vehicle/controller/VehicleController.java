@@ -152,4 +152,22 @@ public class VehicleController {
         }
         return ResponseEntity.notFound().build();
     }
+    // Public Customer Endpoints for Rental Browse and Search
+    @GetMapping("/public/rent")
+    public ResponseEntity<List<VehicleRent>> getPublicAvailableRentVehicles() {
+        return ResponseEntity.ok(vehicleService.getAllAvailableRentVehicles());
+    }
+
+    @GetMapping("/public/rent/search")
+    public ResponseEntity<List<VehicleRent>> searchPublicRentVehicles(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String type,
+            @RequestParam(required = false) String gearType,
+            @RequestParam(required = false) String fuelType,
+            @RequestParam(required = false) Double maxPrice,
+            @RequestParam(required = false) Integer seats) {
+
+        List<VehicleRent> results = vehicleService.searchAvailableRentVehicles(name, type, gearType, fuelType, maxPrice, seats);
+        return ResponseEntity.ok(results);
+    }
 }
