@@ -19,8 +19,8 @@ function AdminDashboard() {
     const [showEditModal, setShowEditModal] = useState(false);
     const [showAddVehicleModal, setShowAddVehicleModal] = useState(false);
     const [vehicleFormData, setVehicleFormData] = useState({
-        name: '', type: 'Sedan', year: 2024, dailyRate: '', status: 'Available', 
-        description: '', mileageLimit: 100, extraMileageCharge: '', 
+        name: '', type: 'Sedan', year: 2024, dailyRate: '', status: 'Available',
+        description: '', mileageLimit: 100, extraMileageCharge: '',
         avgFuelEfficiency: '', gearType: 'Auto', seats: 4, fuelType: 'Petrol'
     });
     const [vehicleImage, setVehicleImage] = useState(null);
@@ -141,7 +141,7 @@ function AdminDashboard() {
                 apiFetch('/api/inquiries/admin/all'),
                 apiFetch('/api/inquiries/trending')
             ]);
-            
+
             if (inquiriesRes.ok) {
                 const data = await inquiriesRes.json();
                 setInquiries(data);
@@ -159,14 +159,14 @@ function AdminDashboard() {
 
     const handleGeneratePDF = () => {
         const doc = new jsPDF();
-        
+
         doc.setFontSize(22);
         doc.text("Samarasinghe Motors", 14, 22);
-        
+
         doc.setFontSize(14);
         doc.setTextColor(150);
         doc.text("Trending Vehicles & Inquiry Analytics Report", 14, 30);
-        
+
         doc.setFontSize(10);
         doc.setTextColor(0);
         doc.text(`Generated on: ${new Date().toLocaleString()}`, 14, 40);
@@ -497,29 +497,7 @@ function AdminDashboard() {
                 </div>
 
                 <nav className="sidebar-nav">
-                    <button
-                        className={`nav-btn ${activeTab === 'payment' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('payment')}
-                    >
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <rect x="2" y="5" width="20" height="14" rx="2" />
-                            <line x1="2" y1="10" x2="22" y2="10" />
-                        </svg>
-                        Payment Management
-                        {pendingPayments.length > 0 && activeTab === 'payment' && (
-                            <span className="badge">{pendingPayments.length} </span>
-                        )}
-                    </button>
 
-                    <button
-                        className={`nav-btn ${activeTab === 'payment-history' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('payment-history')}
-                    >
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="8" x2="6" y2="8"></line><line x1="6" y1="12" x2="6" y2="12"></line><line x1="6" y1="16" x2="6" y2="16"></line>
-                        </svg>
-                        Payment History
-                    </button>
 
                     <button
                         className={`nav-btn ${activeTab === 'user' ? 'active' : ''}`}
@@ -533,6 +511,11 @@ function AdminDashboard() {
                         </svg>
                         User Management
                     </button>
+
+
+
+
+
 
                     <button
                         className={`nav-btn ${activeTab === 'rent-vehicle' ? 'active' : ''}`}
@@ -555,6 +538,30 @@ function AdminDashboard() {
                             <polyline points="22,6 12,13 2,6" />
                         </svg>
                         Sale Inquiries
+                    </button>
+
+                    <button
+                        className={`nav-btn ${activeTab === 'payment' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('payment')}
+                    >
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="2" y="5" width="20" height="14" rx="2" />
+                            <line x1="2" y1="10" x2="22" y2="10" />
+                        </svg>
+                        Payment Management
+                        {pendingPayments.length > 0 && activeTab === 'payment' && (
+                            <span className="badge">{pendingPayments.length} </span>
+                        )}
+                    </button>
+
+                    <button
+                        className={`nav-btn ${activeTab === 'payment-history' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('payment-history')}
+                    >
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="6" y1="8" x2="6" y2="8"></line><line x1="6" y1="12" x2="6" y2="12"></line><line x1="6" y1="16" x2="6" y2="16"></line>
+                        </svg>
+                        Payment History
                     </button>
 
                     <button
@@ -639,18 +646,7 @@ function AdminDashboard() {
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
                         </div>
-                        <button className="icon-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-                            </svg>
-                        </button>
-                        <button className="icon-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <circle cx="12" cy="12" r="3" />
-                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
-                            </svg>
-                        </button>
+
                     </div>
                 </header>
 
@@ -872,23 +868,23 @@ function AdminDashboard() {
                                                             {payment.status}
                                                         </span>
                                                     </td>
-                                                     <td className="text-muted" style={{ maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={payment.remarks || 'N/A'}>
+                                                    <td className="text-muted" style={{ maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={payment.remarks || 'N/A'}>
                                                         {payment.remarks || '-'}
                                                     </td>
                                                     <td>
                                                         {payment.status?.toLowerCase() === 'approved' ? (
-                                                            <button 
-                                                                className="btn-view-slip" 
+                                                            <button
+                                                                className="btn-view-slip"
                                                                 onClick={() => handleDownloadInvoice(payment.paymentId || payment.id)}
                                                                 title="Download Invoice PDF"
                                                             >
-                                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width: '14px', height: '14px'}}>
-                                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '14px', height: '14px' }}>
+                                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" />
                                                                 </svg>
                                                                 Invoice
                                                             </button>
                                                         ) : (
-                                                            <span className="text-muted" style={{fontSize: '12px'}}>N/A</span>
+                                                            <span className="text-muted" style={{ fontSize: '12px' }}>N/A</span>
                                                         )}
                                                     </td>
                                                 </tr>
@@ -1087,8 +1083,8 @@ function AdminDashboard() {
                                 {vehicleTab === 'rent' && (
                                     <button className="action-btn success" onClick={() => {
                                         setVehicleFormData({
-                                            name: '', type: 'Sedan', year: 2024, dailyRate: '', status: 'Available', 
-                                            description: '', mileageLimit: 100, extraMileageCharge: '', 
+                                            name: '', type: 'Sedan', year: 2024, dailyRate: '', status: 'Available',
+                                            description: '', mileageLimit: 100, extraMileageCharge: '',
                                             avgFuelEfficiency: '', gearType: 'Auto', seats: 4, fuelType: 'Petrol'
                                         });
                                         setVehicleImage(null);
@@ -1111,198 +1107,198 @@ function AdminDashboard() {
                                     </button>
                                 )}
                             </div>
-                            
+
                             {vehicleTab === 'rent' && (
                                 <>
-                            <div className="user-table-wrapper">
-                                <table className="admin-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Vehicle</th>
-                                            <th>Specs</th>
-                                            <th>Conditions</th>
-                                            <th>Status</th>
-                                            <th>Rate (Rs.)</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {rentVehicles.map(v => (
-                                            <tr key={v.vehicleRentId}>
-                                                <td>
-                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                                        {v.images && v.images.length > 0 ? (
-                                                            <img src={v.images[0].imgUrl} alt="car" style={{ width: 60, height: 40, objectFit: 'cover', borderRadius: 5 }} />
-                                                        ) : (
-                                                            <div style={{ width: 60, height: 40, background: '#333', borderRadius: 5, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>🚗</div>
-                                                        )}
-                                                        <div>
-                                                            <div style={{ fontSize: '15px', fontWeight: 'bold' }}>{v.name}</div>
-                                                            <div className="text-muted" style={{ fontSize: '11px' }}>{v.year} &bull; {v.type}</div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div style={{ fontSize: '12px' }}>⛽ {v.fuelType} ({v.avgFuelEfficiency || 'N/A'})</div>
-                                                    <div className="text-muted" style={{ fontSize: '11px' }}>⚙️ {v.gearType} &bull; 💺 {v.seats} Seats</div>
-                                                </td>
-                                                <td>
-                                                    <div style={{ fontSize: '12px' }}>Limit: {v.mileageLimit || 'N/A'} km</div>
-                                                    <div className="text-muted" style={{ fontSize: '11px' }}>Extra: Rs. {v.extraMileageCharge || 0}/km</div>
-                                                </td>
-                                                <td><span className={`status-pill ${v.status === 'Available' ? 'active' : 'blocked'}`}>{v.status}</span></td>
-                                                <td className="text-gold fw-bold">Rs. {v.dailyRate}</td>
-                                                <td>
-                                                    <div className="table-actions">
-                                                        <button className="icon-action edit" onClick={() => {
-                                                            setVehicleFormData(v);
-                                                            setVehicleImage(null);
-                                                            setShowAddVehicleModal(true);
-                                                        }}>
-                                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" /><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
-                                                        </button>
-                                                        <button className="icon-action delete" onClick={() => handleDeleteRentVehicle(v.vehicleRentId)}>
-                                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /><line x1="10" y1="11" x2="10" y2="17" /><line x1="14" y1="11" x2="14" y2="17" /></svg>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            {/* Add Rent Vehicle Modal */}
-                            {showAddVehicleModal && (
-                                <div className="modal-overlay">
-                                    <div className="admin-modal" style={{ maxWidth: '800px' }}>
-                                        <div className="modal-header">
-                                            <h3>{vehicleFormData.vehicleRentId ? 'Edit' : 'Add New'} Rent Vehicle</h3>
-                                            <button className="close-btn" onClick={() => setShowAddVehicleModal(false)}>&times;</button>
-                                        </div>
-                                        <form onSubmit={handleAddRentVehicleSubmit} className="admin-form">
-                                            <div className="form-grid" style={{ gridTemplateColumns: '1fr 1fr 1fr' }}>
-                                                <div className="form-group"><label>Name</label><input type="text" required value={vehicleFormData.name} onChange={e => setVehicleFormData({ ...vehicleFormData, name: e.target.value })} /></div>
-                                                <div className="form-group"><label>Type</label><input type="text" required value={vehicleFormData.type} onChange={e => setVehicleFormData({ ...vehicleFormData, type: e.target.value })} /></div>
-                                                <div className="form-group"><label>Year</label><input type="number" min="1900" max="2100" required value={vehicleFormData.year} onChange={e => setVehicleFormData({ ...vehicleFormData, year: e.target.value })} /></div>
-                                                
-                                                <div className="form-group"><label>Daily Rate (Rs.)</label><input type="number" min="0" step="0.01" required value={vehicleFormData.dailyRate} onChange={e => setVehicleFormData({ ...vehicleFormData, dailyRate: e.target.value })} /></div>
-                                                <div className="form-group"><label>Mileage Limit</label><input type="number" min="0" value={vehicleFormData.mileageLimit} onChange={e => setVehicleFormData({ ...vehicleFormData, mileageLimit: e.target.value })} /></div>
-                                                <div className="form-group"><label>Extra Mileage (Rs)</label><input type="number" min="0" step="0.01" value={vehicleFormData.extraMileageCharge} onChange={e => setVehicleFormData({ ...vehicleFormData, extraMileageCharge: e.target.value })} /></div>
-
-                                                <div className="form-group"><label>Gear Type</label><select value={vehicleFormData.gearType} onChange={e => setVehicleFormData({ ...vehicleFormData, gearType: e.target.value })}><option value="Auto">Auto</option><option value="Manual">Manual</option></select></div>
-                                                <div className="form-group"><label>Fuel Type</label><select value={vehicleFormData.fuelType} onChange={e => setVehicleFormData({ ...vehicleFormData, fuelType: e.target.value })}><option value="Petrol">Petrol</option><option value="Diesel">Diesel</option><option value="Hybrid">Hybrid</option><option value="Electric">Electric</option></select></div>
-                                                <div className="form-group"><label>Seats</label><input type="number" min="1" max="100" required value={vehicleFormData.seats} onChange={e => setVehicleFormData({ ...vehicleFormData, seats: e.target.value })} /></div>
-
-                                                <div className="form-group"><label>Fuel Efficiency (km/l)</label><input type="text" value={vehicleFormData.avgFuelEfficiency} onChange={e => setVehicleFormData({ ...vehicleFormData, avgFuelEfficiency: e.target.value })} /></div>
-                                                <div className="form-group"><label>Status</label><select value={vehicleFormData.status} onChange={e => setVehicleFormData({ ...vehicleFormData, status: e.target.value })}><option value="Available">Available</option><option value="Reserved">Reserved</option><option value="Rented">Rented</option></select></div>
-                                                <div className="form-group"><label>Vehicle Image</label><input type="file" accept="image/*" onChange={e => setVehicleImage(e.target.files[0])} style={{ padding: '8px' }} /></div>
-                                            </div>
-                                            <div className="form-group" style={{ marginTop: '15px' }}><label>Description</label><textarea rows="3" value={vehicleFormData.description} onChange={e => setVehicleFormData({ ...vehicleFormData, description: e.target.value })}></textarea></div>
-                                            <div className="modal-footer"><button type="submit" className="action-btn success">{vehicleFormData.vehicleRentId ? 'Update' : 'Save'} Vehicle</button></div>
-                                        </form>
+                                    <div className="user-table-wrapper">
+                                        <table className="admin-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Vehicle</th>
+                                                    <th>Specs</th>
+                                                    <th>Conditions</th>
+                                                    <th>Status</th>
+                                                    <th>Rate (Rs.)</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {rentVehicles.map(v => (
+                                                    <tr key={v.vehicleRentId}>
+                                                        <td>
+                                                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                                                {v.images && v.images.length > 0 ? (
+                                                                    <img src={v.images[0].imgUrl} alt="car" style={{ width: 60, height: 40, objectFit: 'cover', borderRadius: 5 }} />
+                                                                ) : (
+                                                                    <div style={{ width: 60, height: 40, background: '#333', borderRadius: 5, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>🚗</div>
+                                                                )}
+                                                                <div>
+                                                                    <div style={{ fontSize: '15px', fontWeight: 'bold' }}>{v.name}</div>
+                                                                    <div className="text-muted" style={{ fontSize: '11px' }}>{v.year} &bull; {v.type}</div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div style={{ fontSize: '12px' }}>⛽ {v.fuelType} ({v.avgFuelEfficiency || 'N/A'})</div>
+                                                            <div className="text-muted" style={{ fontSize: '11px' }}>⚙️ {v.gearType} &bull; 💺 {v.seats} Seats</div>
+                                                        </td>
+                                                        <td>
+                                                            <div style={{ fontSize: '12px' }}>Limit: {v.mileageLimit || 'N/A'} km</div>
+                                                            <div className="text-muted" style={{ fontSize: '11px' }}>Extra: Rs. {v.extraMileageCharge || 0}/km</div>
+                                                        </td>
+                                                        <td><span className={`status-pill ${v.status === 'Available' ? 'active' : 'blocked'}`}>{v.status}</span></td>
+                                                        <td className="text-gold fw-bold">Rs. {v.dailyRate}</td>
+                                                        <td>
+                                                            <div className="table-actions">
+                                                                <button className="icon-action edit" onClick={() => {
+                                                                    setVehicleFormData(v);
+                                                                    setVehicleImage(null);
+                                                                    setShowAddVehicleModal(true);
+                                                                }}>
+                                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" /><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
+                                                                </button>
+                                                                <button className="icon-action delete" onClick={() => handleDeleteRentVehicle(v.vehicleRentId)}>
+                                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /><line x1="10" y1="11" x2="10" y2="17" /><line x1="14" y1="11" x2="14" y2="17" /></svg>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </div>
+
+                                    {/* Add Rent Vehicle Modal */}
+                                    {showAddVehicleModal && (
+                                        <div className="modal-overlay">
+                                            <div className="admin-modal" style={{ maxWidth: '800px' }}>
+                                                <div className="modal-header">
+                                                    <h3>{vehicleFormData.vehicleRentId ? 'Edit' : 'Add New'} Rent Vehicle</h3>
+                                                    <button className="close-btn" onClick={() => setShowAddVehicleModal(false)}>&times;</button>
+                                                </div>
+                                                <form onSubmit={handleAddRentVehicleSubmit} className="admin-form">
+                                                    <div className="form-grid" style={{ gridTemplateColumns: '1fr 1fr 1fr' }}>
+                                                        <div className="form-group"><label>Name</label><input type="text" required value={vehicleFormData.name} onChange={e => setVehicleFormData({ ...vehicleFormData, name: e.target.value })} /></div>
+                                                        <div className="form-group"><label>Type</label><input type="text" required value={vehicleFormData.type} onChange={e => setVehicleFormData({ ...vehicleFormData, type: e.target.value })} /></div>
+                                                        <div className="form-group"><label>Year</label><input type="number" min="1900" max="2100" required value={vehicleFormData.year} onChange={e => setVehicleFormData({ ...vehicleFormData, year: e.target.value })} /></div>
+
+                                                        <div className="form-group"><label>Daily Rate (Rs.)</label><input type="number" min="0" step="0.01" required value={vehicleFormData.dailyRate} onChange={e => setVehicleFormData({ ...vehicleFormData, dailyRate: e.target.value })} /></div>
+                                                        <div className="form-group"><label>Mileage Limit</label><input type="number" min="0" value={vehicleFormData.mileageLimit} onChange={e => setVehicleFormData({ ...vehicleFormData, mileageLimit: e.target.value })} /></div>
+                                                        <div className="form-group"><label>Extra Mileage (Rs)</label><input type="number" min="0" step="0.01" value={vehicleFormData.extraMileageCharge} onChange={e => setVehicleFormData({ ...vehicleFormData, extraMileageCharge: e.target.value })} /></div>
+
+                                                        <div className="form-group"><label>Gear Type</label><select value={vehicleFormData.gearType} onChange={e => setVehicleFormData({ ...vehicleFormData, gearType: e.target.value })}><option value="Auto">Auto</option><option value="Manual">Manual</option></select></div>
+                                                        <div className="form-group"><label>Fuel Type</label><select value={vehicleFormData.fuelType} onChange={e => setVehicleFormData({ ...vehicleFormData, fuelType: e.target.value })}><option value="Petrol">Petrol</option><option value="Diesel">Diesel</option><option value="Hybrid">Hybrid</option><option value="Electric">Electric</option></select></div>
+                                                        <div className="form-group"><label>Seats</label><input type="number" min="1" max="100" required value={vehicleFormData.seats} onChange={e => setVehicleFormData({ ...vehicleFormData, seats: e.target.value })} /></div>
+
+                                                        <div className="form-group"><label>Fuel Efficiency (km/l)</label><input type="text" value={vehicleFormData.avgFuelEfficiency} onChange={e => setVehicleFormData({ ...vehicleFormData, avgFuelEfficiency: e.target.value })} /></div>
+                                                        <div className="form-group"><label>Status</label><select value={vehicleFormData.status} onChange={e => setVehicleFormData({ ...vehicleFormData, status: e.target.value })}><option value="Available">Available</option><option value="Reserved">Reserved</option><option value="Rented">Rented</option></select></div>
+                                                        <div className="form-group"><label>Vehicle Image</label><input type="file" accept="image/*" onChange={e => setVehicleImage(e.target.files[0])} style={{ padding: '8px' }} /></div>
+                                                    </div>
+                                                    <div className="form-group" style={{ marginTop: '15px' }}><label>Description</label><textarea rows="3" value={vehicleFormData.description} onChange={e => setVehicleFormData({ ...vehicleFormData, description: e.target.value })}></textarea></div>
+                                                    <div className="modal-footer"><button type="submit" className="action-btn success">{vehicleFormData.vehicleRentId ? 'Update' : 'Save'} Vehicle</button></div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    )}
+                                </>
                             )}
-                            </>
-                            )}
-                            
+
                             {vehicleTab === 'sale' && (
                                 <>
-                                <div className="user-table-wrapper">
-                                    <table className="admin-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Vehicle</th>
-                                                <th>Specs</th>
-                                                <th>Condition</th>
-                                                <th>Price (Rs.)</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {saleVehicles.map(v => (
-                                                <tr key={v.vehicleSaleId}>
-                                                    <td>
-                                                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                                            {v.images && v.images.length > 0 ? (
-                                                                <img src={v.images[0].imgUrl} alt="car" style={{ width: 60, height: 40, objectFit: 'cover', borderRadius: 5 }} />
-                                                            ) : (
-                                                                <div style={{ width: 60, height: 40, background: '#333', borderRadius: 5, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>🚗</div>
-                                                            )}
-                                                            <div>
-                                                                <div style={{ fontSize: '15px', fontWeight: 'bold' }}>{v.name}</div>
-                                                                <div className="text-muted" style={{ fontSize: '11px' }}>{v.brand} &bull; {v.yom}</div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div style={{ fontSize: '12px' }}>⚙️ {v.transmission} ({v.engineCap})</div>
-                                                        <div className="text-muted" style={{ fontSize: '11px' }}>🚙 {v.bodyType} &bull; 🎨 {v.color}</div>
-                                                    </td>
-                                                    <td>
-                                                        <div style={{ fontSize: '12px' }}>{v.conditionStatus} &bull; {v.mileage} km</div>
-                                                        {v.scanReportUrl && <a href={v.scanReportUrl} target="_blank" rel="noreferrer" style={{ fontSize: '11px', color: '#3b82f6' }}>Scan Report</a>}
-                                                    </td>
-                                                    <td className="text-gold fw-bold">
-                                                        <div style={{ fontSize: '13px' }}>Rs. {v.price}</div>
-                                                        <div><span className={`status-pill ${v.status === 'Available' ? 'active' : 'blocked'}`}>{v.status}</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="table-actions">
-                                                            <button className="icon-action edit" onClick={() => {
-                                                                setSaleFormData(v);
-                                                                setSaleImage(null);
-                                                                setShowAddSaleModal(true);
-                                                            }} title="Edit Vehicle">
-                                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" /><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
-                                                            </button>
-                                                            <button className="icon-action delete" onClick={() => handleDeleteSaleVehicle(v.vehicleSaleId)} title="Delete Vehicle">
-                                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /><line x1="10" y1="11" x2="10" y2="17" /><line x1="14" y1="11" x2="14" y2="17" /></svg>
-                                                            </button>
-                                                        </div>
-                                                    </td>
+                                    <div className="user-table-wrapper">
+                                        <table className="admin-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Vehicle</th>
+                                                    <th>Specs</th>
+                                                    <th>Condition</th>
+                                                    <th>Price (Rs.)</th>
+                                                    <th>Actions</th>
                                                 </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                {showAddSaleModal && (
-                                    <div className="modal-overlay">
-                                        <div className="admin-modal" style={{ maxWidth: '800px' }}>
-                                            <div className="modal-header">
-                                                <h3>{saleFormData.vehicleSaleId ? 'Edit' : 'Add New'} Sale Vehicle</h3>
-                                                <button className="close-btn" onClick={() => setShowAddSaleModal(false)}>&times;</button>
-                                            </div>
-                                            <form onSubmit={handleAddSaleVehicleSubmit} className="admin-form">
-                                                <div className="form-grid" style={{ gridTemplateColumns: '1fr 1fr 1fr' }}>
-                                                    <div className="form-group"><label>Name</label><input type="text" required value={saleFormData.name} onChange={e => setSaleFormData({ ...saleFormData, name: e.target.value })} /></div>
-                                                    <div className="form-group"><label>Brand</label><input type="text" value={saleFormData.brand} onChange={e => setSaleFormData({ ...saleFormData, brand: e.target.value })} /></div>
-                                                    <div className="form-group"><label>Body Type</label><input type="text" value={saleFormData.bodyType} onChange={e => setSaleFormData({ ...saleFormData, bodyType: e.target.value })} /></div>
-
-                                                    <div className="form-group"><label>YOM</label><input type="number" min="1900" max="2100" required value={saleFormData.yom} onChange={e => setSaleFormData({ ...saleFormData, yom: e.target.value })} /></div>
-                                                    <div className="form-group"><label>Year Registered</label><input type="number" min="1900" max="2100" value={saleFormData.yearReg} onChange={e => setSaleFormData({ ...saleFormData, yearReg: e.target.value })} /></div>
-                                                    <div className="form-group"><label>Price (Rs.)</label><input type="number" min="0" step="0.01" required value={saleFormData.price} onChange={e => setSaleFormData({ ...saleFormData, price: e.target.value })} /></div>
-                                                    
-                                                    <div className="form-group"><label>Transmission</label><select value={saleFormData.transmission} onChange={e => setSaleFormData({ ...saleFormData, transmission: e.target.value })}><option value="Auto">Auto</option><option value="Manual">Manual</option><option value="Tiptronic">Tiptronic</option></select></div>
-                                                    <div className="form-group"><label>Condition</label><select value={saleFormData.conditionStatus} onChange={e => setSaleFormData({ ...saleFormData, conditionStatus: e.target.value })}><option value="Brand New">Brand New</option><option value="Used">Used</option><option value="Reconditioned">Reconditioned</option></select></div>
-                                                    <div className="form-group"><label>Mileage (km)</label><input type="number" min="0" value={saleFormData.mileage} onChange={e => setSaleFormData({ ...saleFormData, mileage: e.target.value })} /></div>
-
-                                                    <div className="form-group"><label>Engine Capacity</label><input type="text" value={saleFormData.engineCap} onChange={e => setSaleFormData({ ...saleFormData, engineCap: e.target.value })} /></div>
-                                                    <div className="form-group"><label>Color</label><input type="text" value={saleFormData.color} onChange={e => setSaleFormData({ ...saleFormData, color: e.target.value })} /></div>
-                                                    <div className="form-group"><label>Status</label><select value={saleFormData.status} onChange={e => setSaleFormData({ ...saleFormData, status: e.target.value })}><option value="Available">Available</option><option value="Sold">Sold</option><option value="Reserved">Reserved</option></select></div>
-
-                                                    <div className="form-group"><label>Edition</label><input type="text" value={saleFormData.edition} onChange={e => setSaleFormData({ ...saleFormData, edition: e.target.value })} /></div>
-                                                    <div className="form-group"><label>Scan Report URL</label><input type="text" placeholder="https://" value={saleFormData.scanReportUrl} onChange={e => setSaleFormData({ ...saleFormData, scanReportUrl: e.target.value })} /></div>
-                                                    <div className="form-group"><label>Vehicle Image</label><input type="file" accept="image/*" onChange={e => setSaleImage(e.target.files[0])} style={{ padding: '8px' }} /></div>
-                                                </div>
-                                                <div className="form-group" style={{ marginTop: '15px' }}><label>Description</label><textarea rows="3" value={saleFormData.description} onChange={e => setSaleFormData({ ...saleFormData, description: e.target.value })}></textarea></div>
-                                                <div className="modal-footer"><button type="submit" className="action-btn success">{saleFormData.vehicleSaleId ? 'Update' : 'Save'} Vehicle</button></div>
-                                            </form>
-                                        </div>
+                                            </thead>
+                                            <tbody>
+                                                {saleVehicles.map(v => (
+                                                    <tr key={v.vehicleSaleId}>
+                                                        <td>
+                                                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                                                {v.images && v.images.length > 0 ? (
+                                                                    <img src={v.images[0].imgUrl} alt="car" style={{ width: 60, height: 40, objectFit: 'cover', borderRadius: 5 }} />
+                                                                ) : (
+                                                                    <div style={{ width: 60, height: 40, background: '#333', borderRadius: 5, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>🚗</div>
+                                                                )}
+                                                                <div>
+                                                                    <div style={{ fontSize: '15px', fontWeight: 'bold' }}>{v.name}</div>
+                                                                    <div className="text-muted" style={{ fontSize: '11px' }}>{v.brand} &bull; {v.yom}</div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div style={{ fontSize: '12px' }}>⚙️ {v.transmission} ({v.engineCap})</div>
+                                                            <div className="text-muted" style={{ fontSize: '11px' }}>🚙 {v.bodyType} &bull; 🎨 {v.color}</div>
+                                                        </td>
+                                                        <td>
+                                                            <div style={{ fontSize: '12px' }}>{v.conditionStatus} &bull; {v.mileage} km</div>
+                                                            {v.scanReportUrl && <a href={v.scanReportUrl} target="_blank" rel="noreferrer" style={{ fontSize: '11px', color: '#3b82f6' }}>Scan Report</a>}
+                                                        </td>
+                                                        <td className="text-gold fw-bold">
+                                                            <div style={{ fontSize: '13px' }}>Rs. {v.price}</div>
+                                                            <div><span className={`status-pill ${v.status === 'Available' ? 'active' : 'blocked'}`}>{v.status}</span></div>
+                                                        </td>
+                                                        <td>
+                                                            <div className="table-actions">
+                                                                <button className="icon-action edit" onClick={() => {
+                                                                    setSaleFormData(v);
+                                                                    setSaleImage(null);
+                                                                    setShowAddSaleModal(true);
+                                                                }} title="Edit Vehicle">
+                                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" /><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
+                                                                </button>
+                                                                <button className="icon-action delete" onClick={() => handleDeleteSaleVehicle(v.vehicleSaleId)} title="Delete Vehicle">
+                                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /><line x1="10" y1="11" x2="10" y2="17" /><line x1="14" y1="11" x2="14" y2="17" /></svg>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
                                     </div>
-                                )}
+
+                                    {showAddSaleModal && (
+                                        <div className="modal-overlay">
+                                            <div className="admin-modal" style={{ maxWidth: '800px' }}>
+                                                <div className="modal-header">
+                                                    <h3>{saleFormData.vehicleSaleId ? 'Edit' : 'Add New'} Sale Vehicle</h3>
+                                                    <button className="close-btn" onClick={() => setShowAddSaleModal(false)}>&times;</button>
+                                                </div>
+                                                <form onSubmit={handleAddSaleVehicleSubmit} className="admin-form">
+                                                    <div className="form-grid" style={{ gridTemplateColumns: '1fr 1fr 1fr' }}>
+                                                        <div className="form-group"><label>Name</label><input type="text" required value={saleFormData.name} onChange={e => setSaleFormData({ ...saleFormData, name: e.target.value })} /></div>
+                                                        <div className="form-group"><label>Brand</label><input type="text" value={saleFormData.brand} onChange={e => setSaleFormData({ ...saleFormData, brand: e.target.value })} /></div>
+                                                        <div className="form-group"><label>Body Type</label><input type="text" value={saleFormData.bodyType} onChange={e => setSaleFormData({ ...saleFormData, bodyType: e.target.value })} /></div>
+
+                                                        <div className="form-group"><label>YOM</label><input type="number" min="1900" max="2100" required value={saleFormData.yom} onChange={e => setSaleFormData({ ...saleFormData, yom: e.target.value })} /></div>
+                                                        <div className="form-group"><label>Year Registered</label><input type="number" min="1900" max="2100" value={saleFormData.yearReg} onChange={e => setSaleFormData({ ...saleFormData, yearReg: e.target.value })} /></div>
+                                                        <div className="form-group"><label>Price (Rs.)</label><input type="number" min="0" step="0.01" required value={saleFormData.price} onChange={e => setSaleFormData({ ...saleFormData, price: e.target.value })} /></div>
+
+                                                        <div className="form-group"><label>Transmission</label><select value={saleFormData.transmission} onChange={e => setSaleFormData({ ...saleFormData, transmission: e.target.value })}><option value="Auto">Auto</option><option value="Manual">Manual</option><option value="Tiptronic">Tiptronic</option></select></div>
+                                                        <div className="form-group"><label>Condition</label><select value={saleFormData.conditionStatus} onChange={e => setSaleFormData({ ...saleFormData, conditionStatus: e.target.value })}><option value="Brand New">Brand New</option><option value="Used">Used</option><option value="Reconditioned">Reconditioned</option></select></div>
+                                                        <div className="form-group"><label>Mileage (km)</label><input type="number" min="0" value={saleFormData.mileage} onChange={e => setSaleFormData({ ...saleFormData, mileage: e.target.value })} /></div>
+
+                                                        <div className="form-group"><label>Engine Capacity</label><input type="text" value={saleFormData.engineCap} onChange={e => setSaleFormData({ ...saleFormData, engineCap: e.target.value })} /></div>
+                                                        <div className="form-group"><label>Color</label><input type="text" value={saleFormData.color} onChange={e => setSaleFormData({ ...saleFormData, color: e.target.value })} /></div>
+                                                        <div className="form-group"><label>Status</label><select value={saleFormData.status} onChange={e => setSaleFormData({ ...saleFormData, status: e.target.value })}><option value="Available">Available</option><option value="Sold">Sold</option><option value="Reserved">Reserved</option></select></div>
+
+                                                        <div className="form-group"><label>Edition</label><input type="text" value={saleFormData.edition} onChange={e => setSaleFormData({ ...saleFormData, edition: e.target.value })} /></div>
+                                                        <div className="form-group"><label>Scan Report URL</label><input type="text" placeholder="https://" value={saleFormData.scanReportUrl} onChange={e => setSaleFormData({ ...saleFormData, scanReportUrl: e.target.value })} /></div>
+                                                        <div className="form-group"><label>Vehicle Image</label><input type="file" accept="image/*" onChange={e => setSaleImage(e.target.files[0])} style={{ padding: '8px' }} /></div>
+                                                    </div>
+                                                    <div className="form-group" style={{ marginTop: '15px' }}><label>Description</label><textarea rows="3" value={saleFormData.description} onChange={e => setSaleFormData({ ...saleFormData, description: e.target.value })}></textarea></div>
+                                                    <div className="modal-footer"><button type="submit" className="action-btn success">{saleFormData.vehicleSaleId ? 'Update' : 'Save'} Vehicle</button></div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    )}
                                 </>
                             )}
                         </div>
@@ -1312,12 +1308,12 @@ function AdminDashboard() {
                         <>
                             <div className="section-header">
                                 <h2>
-                                    <span style={{ fontSize:'1.2rem', marginRight:'10px' }}>📩</span>
+                                    <span style={{ fontSize: '1.2rem', marginRight: '10px' }}>📩</span>
                                     Customer Sale Inquiries
                                 </h2>
                                 <button className="refresh-btn" onClick={fetchInquiries}>Refresh</button>
                             </div>
-                            
+
                             {loading ? <div className="loading-state">Fetching inquiries...</div> : inquiries.length === 0 ? <div className="empty-state">No inquiries found.</div> : (
                                 <div className="inquiries-dashboard-grid">
                                     {/* Left Panel: Active Inquiries List */}
@@ -1334,9 +1330,9 @@ function AdminDashboard() {
                                                         <span className={`inq-badge ${inq.inquiryType === 'BUY_NOW' ? 'badge-buy' : 'badge-neg'}`}>
                                                             {inq.inquiryType === 'BUY_NOW' ? 'BUY NOW' : 'NEGOTIATION'}
                                                         </span>
-                                                        
+
                                                         {inq.status !== 'ACCEPTED' && inq.status !== 'REJECTED' && (
-                                                            <button className="inq-btn inq-outline" onClick={() => setInquiryActionObj({id: inq.inquiryId, type: 'status'})}>Reply / Update</button>
+                                                            <button className="inq-btn inq-outline" onClick={() => setInquiryActionObj({ id: inq.inquiryId, type: 'status' })}>Reply / Update</button>
                                                         )}
                                                         {inq.inquiryType === 'BUY_NOW' && inq.status !== 'ACCEPTED' && inq.status !== 'REJECTED' && (
                                                             <button className="inq-btn inq-gold" onClick={() => handleFinalizeSale(inq.vehicleId, inq.inquiryId)}>Finalize Sale</button>
