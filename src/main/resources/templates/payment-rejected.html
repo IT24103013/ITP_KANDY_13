@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Regarding Your Payment</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 40px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow: hidden; }
+        .header { background-color: #dc3545; color: white; padding: 30px; text-align: center; }
+        .header h1 { margin: 0; font-size: 24px; letter-spacing: 1px; }
+        .content { padding: 40px 30px; color: #444; line-height: 1.6; }
+        .content h2 { color: #333; margin-top: 0; }
+        .summary-box { background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 20px; margin: 25px 0; border-radius: 4px; }
+        .summary-box p { margin: 8px 0; color: #856404; }
+        .btn { display: inline-block; background-color: #007bff; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 20px; }
+        .footer { background-color: #f1f1f1; color: #888; text-align: center; padding: 20px; font-size: 13px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Payment Update</h1>
+        </div>
+        <div class="content">
+            <h2>Dear <span th:text="${customerName}">Customer</span>,</h2>
+            <p>We regret to inform you that we could not approve your recent payment upload for <strong>Booking #<span th:text="${bookingId}"></span></strong>.</p>
+            
+            <div class="summary-box">
+                <p><strong>Reason for Rejection:</strong></p>
+                <p th:text="${remarks}">The uploaded slip is unclear.</p>
+            </div>
+            
+            <p>Please do not worry! Your booking request is still in our system, but your vehicle has not been reserved yet. To secure your booking, please log into your account and re-upload a clear copy of your payment slip.</p>
+            
+            <div style="text-align: center;">
+                <a href="http://localhost:5173/history" class="btn">Re-upload Payment Slip</a>
+            </div>
+            
+            <p style="margin-top: 30px;">If you have any questions, please contact our support team.</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2026 Samarasinghe Motors. All rights reserved.</p>
+            <p>123 Main Road, Colombo | +94 71 234 5678</p>
+        </div>
+    </div>
+</body>
+</html>

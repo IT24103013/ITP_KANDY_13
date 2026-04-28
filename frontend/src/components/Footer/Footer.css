@@ -1,0 +1,20 @@
+.footer {
+    background-color: #0a0b0f;
+    border-top: 1px solid #1e2130;
+    text-align: center;
+    padding: 20px 48px;
+    margin-top: auto;
+}
+
+.footer p {
+    margin: 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: #a8a9af;
+    letter-spacing: 0.3px;
+}
+
+.footer p span {
+    color: #c9a052;
+    font-weight: 500;
+}

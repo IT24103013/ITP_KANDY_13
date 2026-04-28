@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Invoice - Samarasinghe Motors</title>
+    <style>
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333; margin: 0; padding: 0; background: #fff; }
+        .invoice-box { max-width: 800px; margin: auto; padding: 30px; box-sizing: border-box; }
+        .header { display: table; width: 100%; border-bottom: 2px solid #0056b3; padding-bottom: 20px; margin-bottom: 20px; }
+        .header .logo { display: table-cell; vertical-align: top; }
+        .header .logo h1 { margin: 0; color: #0056b3; font-size: 28px; letter-spacing: 1px; }
+        .header .logo p { margin: 5px 0; font-size: 14px; color: #666; }
+        .header .title { display: table-cell; text-align: right; vertical-align: bottom; }
+        .header .title h2 { margin: 0; font-size: 32px; color: #333; letter-spacing: 2px; }
+        
+        .info-section { display: table; width: 100%; margin-bottom: 30px; }
+        .info-section .bill-to { display: table-cell; width: 50%; }
+        .info-section .meta-data { display: table-cell; width: 50%; text-align: right; }
+        .info-section h3 { margin-top: 0; font-size: 18px; color: #0056b3; border-bottom: 1px solid #eee; padding-bottom: 5px; display: inline-block; }
+        .info-section p { margin: 5px 0; font-size: 14px; }
+        
+        .items-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+        .items-table th { background-color: #f8f9fa; color: #333; padding: 12px; text-align: left; border-bottom: 2px solid #ddd; font-weight: bold; }
+        .items-table td { padding: 12px; border-bottom: 1px solid #eee; font-size: 14px; }
+        
+        .summary-section { width: 100%; display: table; }
+        .summary-section .stamp { display: table-cell; width: 50%; vertical-align: middle; }
+        .summary-section .stamp .paid { font-size: 40px; color: #28a745; font-weight: bold; padding: 10px 20px; border: 4px solid #28a745; display: inline-block; transform: rotate(-10deg); text-transform: uppercase; letter-spacing: 2px; }
+        .summary-section .totals { display: table-cell; width: 50%; text-align: right; }
+        .summary-section .totals-table { width: 100%; border-collapse: collapse; float: right; max-width: 300px; }
+        .summary-section .totals-table td { padding: 8px; font-size: 14px; }
+        .summary-section .totals-table tr.total { font-weight: bold; font-size: 18px; color: #0056b3; border-top: 2px solid #ddd; }
+        
+        .footer { margin-top: 50px; text-align: center; color: #777; font-size: 12px; border-top: 1px solid #eee; padding-top: 20px; }
+        .footer p { margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <div class="invoice-box">
+        <div class="header">
+            <div class="logo">
+                <h1>SAMARASINGHE MOTORS</h1>
+                <p>123 Main Road, Colombo, Sri Lanka</p>
+                <p>Phone: +94 71 234 5678</p>
+                <p>Email: info@samarasinghemotors.lk</p>
+            </div>
+            <div class="title">
+                <h2>INVOICE</h2>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="bill-to">
+                <h3>Bill To</h3>
+                <p th:text="${customerName}">John Doe</p>
+                <p th:text="${customerPhone}">+94 77 123 4567</p>
+                <p th:text="${customerEmail}">john@example.com</p>
+            </div>
+            <div class="meta-data">
+                <p><strong>Invoice Number:</strong> <span th:text="${invoiceNumber}">INV-2026-001</span></p>
+                <p><strong>Date of Issue:</strong> <span th:text="${invoiceDate}">01 Jan 2026</span></p>
+                <p><strong>Booking ID:</strong> <span th:text="${bookingId}">100</span></p>
+            </div>
+        </div>
+
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Daily Rate</th>
+                    <th>Days</th>
+                    <th style="text-align: right;">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td th:text="${vehicleName}">Toyota Prius</td>
+                    <td th:text="'LKR ' + ${dailyRate}">LKR 10,000</td>
+                    <td th:text="${days}">5</td>
+                    <td style="text-align: right;" th:text="'LKR ' + ${vehicleAmount}">LKR 50,000</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="summary-section">
+            <div class="stamp">
+                <div class="paid">PAID</div>
+            </div>
+            <div class="totals">
+                <table class="totals-table">
+                    <tr>
+                        <td>Sub Total:</td>
+                        <td th:text="'LKR ' + ${subTotal}">LKR 50,000</td>
+                    </tr>
+                    <tr>
+                        <td>Discount:</td>
+                        <td th:text="'LKR ' + ${discount}">LKR 0</td>
+                    </tr>
+                    <tr class="total">
+                        <td>Total Paid:</td>
+                        <td th:text="'LKR ' + ${totalPaid}">LKR 50,000</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Terms &amp; Conditions:</strong> Payments are non-refundable. Please keep this invoice for your records.</p>
+            <p>Thank you for choosing Samarasinghe Motors!</p>
+        </div>
+    </div>
+</body>
+</html>

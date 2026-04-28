@@ -1,0 +1,613 @@
+/* =============================================
+   BOOKING FORM - DriveConnect Theme
+   Split layout | Dark card | Gold accents
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+/* ---- Page Wrapper ---- */
+.booking-page-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 52px 32px;
+    font-family: 'DM Sans', sans-serif;
+    background-color: #f0ebe0;
+    min-height: calc(100vh - 58px);
+    gap: 48px;
+}
+
+/* ============================================
+   LEFT SIDE — Car Details
+   ============================================ */
+.car-details-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* ---- Breadcrumb ---- */
+.car-breadcrumb {
+    font-size: 12px;
+    color: #9a8f7e;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.car-breadcrumb svg {
+    width: 12px;
+    height: 12px;
+    color: #c9a052;
+}
+
+/* ---- Title ---- */
+.car-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.5px;
+    line-height: 1;
+}
+
+.car-subtitle {
+    color: #c9a052;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 28px 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: opacity 0.2s;
+}
+
+.car-subtitle:hover {
+    opacity: 0.75;
+}
+
+/* ---- Rating Row ---- */
+.car-rating-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.rating-stars {
+    display: flex;
+    gap: 3px;
+    color: #c9a052;
+    font-size: 15px;
+}
+
+.rating-text {
+    font-size: 13px;
+    color: #7a7060;
+}
+
+.rating-divider {
+    width: 1px;
+    height: 14px;
+    background-color: #c8bfae;
+}
+
+/* ---- Feature Badges ---- */
+.features-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+}
+
+.feature-badge {
+    background-color: #ffffff;
+    border: 1px solid #ddd8ce;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #3a3530;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* ---- Description Card ---- */
+.car-description-card {
+    background-color: #0f1117;
+    border: 1px solid #1e2130;
+    border-radius: 16px;
+    padding: 24px 26px;
+    margin-bottom: 28px;
+}
+
+.car-description-card h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.9px;
+    margin: 0 0 12px 0;
+}
+
+.car-description-card p {
+    font-size: 14px;
+    color: #8a94a8;
+    line-height: 1.75;
+    margin: 0;
+}
+
+/* ---- Specs Grid ---- */
+.car-specs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.spec-item {
+    background-color: #0f1117;
+    border: 1px solid #1e2130;
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.spec-label {
+    font-size: 10px;
+    color: #4a5270;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+}
+
+.spec-value {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* ---- Included Offers ---- */
+.included-offers {
+    background-color: #0f1117;
+    border: 1px solid #1e2130;
+    border-radius: 16px;
+    padding: 22px 26px;
+}
+
+.included-offers h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.included-offers h3 svg {
+    color: #c9a052;
+    width: 16px;
+    height: 16px;
+}
+
+.included-offers ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.included-offers li {
+    font-size: 14px;
+    color: #8a94a8;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1.4;
+}
+
+.check-mark {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #4ade80;
+}
+
+.check-mark svg {
+    width: 11px;
+    height: 11px;
+}
+
+/* ============================================
+   RIGHT SIDE — Booking Card
+   ============================================ */
+.booking-card-section {
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* ---- Car Image ---- */
+.car-image-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    margin-bottom: -20px;
+}
+
+.car-image {
+    width: 100%;
+    max-width: 300px;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.2));
+    transition: transform 0.35s ease;
+}
+
+.car-image:hover {
+    transform: scale(1.03) translateY(-4px);
+}
+
+/* ---- Price Tag ---- */
+.price-tag {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: #c9a052;
+    color: #0a0b0f;
+    border-radius: 10px;
+    padding: 6px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1.2;
+}
+
+.price-amount {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.price-unit {
+    font-size: 10px;
+    font-weight: 600;
+    opacity: 0.75;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ---- Booking Card ---- */
+.booking-card {
+    width: 100%;
+    padding: 28px;
+    background-color: #0f1117;
+    border: 1px solid #1e2130;
+    border-radius: 18px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+.booking-card-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 16px 0 22px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.booking-card-title svg {
+    color: #c9a052;
+    width: 20px;
+    height: 20px;
+}
+
+/* ---- Date Range Visual ---- */
+.date-range-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.date-range-divider {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, #1e2130, #c9a052, #1e2130);
+    position: relative;
+}
+
+.date-range-divider::after {
+    content: '→';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0f1117;
+    color: #c9a052;
+    padding: 0 6px;
+    font-size: 14px;
+}
+
+/* ---- Form ---- */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #4a5270;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+.form-label svg {
+    width: 13px;
+    height: 13px;
+    color: #c9a052;
+}
+
+.form-input {
+    width: 100%;
+    padding: 11px 14px;
+    background-color: #161b27;
+    border: 1px solid #2a2f3e;
+    border-radius: 10px;
+    color: #c8cdd8;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+    color-scheme: dark;
+}
+
+.form-input:focus {
+    border-color: rgba(201, 160, 82, 0.5);
+    box-shadow: 0 0 0 3px rgba(201, 160, 82, 0.08);
+}
+
+/* ---- Submit Button ---- */
+.submit-btn {
+    width: 100%;
+    padding: 13px;
+    background-color: #c9a052;
+    color: #0a0b0f;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.submit-btn svg {
+    width: 17px;
+    height: 17px;
+}
+
+.submit-btn:hover {
+    background-color: #e0b96a;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(201, 160, 82, 0.25);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* ---- Error Message ---- */
+.error-message {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #f87171;
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    margin-top: 14px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.error-message svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+/* ---- Trust Badges ---- */
+.trust-badges {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: #ffffff;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.trust-item svg {
+    width: 18px;
+    height: 18px;
+    color: #ffffff;
+}
+
+/* ---- Price Summary Box (New) ---- */
+.price-summary-box {
+    background-color: #161b27;
+    border: 1px solid #2a2f3e;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #8a94a8;
+    font-weight: 500;
+}
+
+.price-divider {
+    border: 0;
+    height: 1px;
+    background-color: #2a2f3e;
+    margin: 14px 0;
+}
+
+.total-row {
+    color: #ffffff;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.total-amount {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #c9a052;
+}
+
+/* --- Promo Section Styles --- */
+.promo-section {
+    margin-top: 15px;
+}
+
+.promo-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.promo-input {
+    flex: 1;
+    text-transform: uppercase;
+}
+
+.promo-apply-btn {
+    padding: 0 20px;
+    background-color: transparent;
+    border: 1px solid #c9a052;
+    color: #c9a052;
+    border-radius: 8px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.promo-apply-btn:hover:not(:disabled) {
+    background-color: #c9a052;
+    color: #0a0b0f;
+}
+
+.promo-apply-btn:disabled {
+    opacity: 0.5;
+    border-color: #4a5270;
+    color: #4a5270;
+}
+
+.promo-msg {
+    font-size: 11px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.promo-success { color: #4ade80; }
+.promo-error { color: #f87171; }
+
+.discount-row {
+    color: #4ade80 !important;
+    font-size: 13px !important;
+    margin-top: 4px;
+}
+
+.strike-price {
+    text-decoration: line-through;
+    color: #4a5270;
+    font-size: 14px;
+    margin-right: 8px;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+/* ---- Mobile Responsive ---- */
+@media (max-width: 768px) {
+    .booking-page-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 32px 20px;
+    }
+
+    .booking-card-section {
+        width: 100%;
+        max-width: 420px;
+    }
+
+    .car-specs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .car-title {
+        font-size: 36px;
+    }
+}

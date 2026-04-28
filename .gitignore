@@ -4,6 +4,17 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### Sensitive Info ###
+src/main/resources/application.properties
+uploads/*
+!uploads/.gitkeep
+
+### Frontend ###
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+
 ### STS ###
 .apt_generated
 .classpath
@@ -31,3 +42,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### OS Junk ###
+.DS_Store
+Thumbs.db

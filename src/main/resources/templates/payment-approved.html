@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Confirmed</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 40px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow: hidden; }
+        .header { background-color: #28a745; color: white; padding: 30px; text-align: center; }
+        .header h1 { margin: 0; font-size: 24px; letter-spacing: 1px; }
+        .content { padding: 40px 30px; color: #444; line-height: 1.6; }
+        .content h2 { color: #333; margin-top: 0; }
+        .summary-box { background-color: #f8f9fa; border-left: 4px solid #28a745; padding: 20px; margin: 25px 0; border-radius: 4px; }
+        .summary-box p { margin: 8px 0; }
+        .btn { display: inline-block; background-color: #007bff; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 20px; }
+        .footer { background-color: #f1f1f1; color: #888; text-align: center; padding: 20px; font-size: 13px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Booking Confirmed!</h1>
+        </div>
+        <div class="content">
+            <h2>Dear <span th:text="${customerName}">Customer</span>,</h2>
+            <p>We are pleased to inform you that your payment of <strong>LKR <span th:text="${amount}"></span></strong> has been successfully verified and approved.</p>
+            
+            <div class="summary-box">
+                <p><strong>Vehicle:</strong> <span th:text="${vehicleName}"></span></p>
+                <p><strong>Pickup Date:</strong> <span th:text="${pickupDate}"></span></p>
+                <p><strong>Return Date:</strong> <span th:text="${returnDate}"></span></p>
+            </div>
+            
+            <p>Your official PDF invoice is attached to this email. Please review it for your records.</p>
+            
+            <p style="color: #d9534f; font-weight: bold;">Important Reminder:</p>
+            <p>Please remember to bring your <strong>Original Driving License</strong> and National Identity Card (NIC) when you come to collect the vehicle.</p>
+            
+            <p>Thank you for choosing Samarasinghe Motors!</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2026 Samarasinghe Motors. All rights reserved.</p>
+            <p>123 Main Road, Colombo | +94 71 234 5678</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,441 @@
+/* =============================================
+   VEHICLE GALLERY - DriveConnect Theme
+   Cream bg | Dark cards | Gold accents
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap');
+
+/* ---- Page Wrapper ---- */
+.gallery-layout {
+    padding: 52px 40px;
+    background-color: #f0ebe0;
+    min-height: calc(100vh - 58px);
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* ---- Header Full Level ---- */
+.gallery-header-full {
+    margin-bottom: 30px;
+}
+
+.gallery-header-full h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 34px;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin: 0 0 5px 0;
+}
+
+.gallery-header-full h1 span {
+    color: #c9a052;
+    font-weight: 600;
+}
+
+.gallery-header-full p {
+    color: #7a7060;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* ---- Main Content Wrapper (CSS GRID) ---- */
+.gallery-content-wrapper {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* ---- Left Sidebar (Filters) ---- */
+.filters-sidebar {
+    background-color: #161a22;
+    border-radius: 16px;
+    padding: 24px;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 24px;
+}
+
+.sidebar-header {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.hourglass-icon {
+    font-size: 18px;
+}
+
+/* Filter Fields Container */
+.filter-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.filter-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0; /* allows flex wrapping to shrink */
+}
+
+.filter-group.full-width {
+    margin-bottom: 16px;
+}
+
+.filter-group label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #8a94a8;
+    font-weight: 600;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.filter-group input,
+.filter-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #282c38;
+    background-color: #0f1117;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.filter-group input::placeholder {
+    color: #4a5270;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+    border-color: #c9a052;
+}
+
+/* ---- Filter Action Buttons ---- */
+.filter-actions-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.reset-filters-btn {
+    flex: 1;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #4a5270;
+    background-color: transparent;
+    color: #a0a6b5;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.reset-filters-btn:hover {
+    color: #fff;
+    border-color: #fff;
+    transform: translateY(-1px);
+}
+
+.reset-filters-btn:active {
+    transform: translateY(0);
+}
+
+.apply-filters-btn {
+    flex: 2;
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    background-color: #e2b761;
+    color: #000;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s;
+}
+
+.apply-filters-btn:hover {
+    background-color: #c9a052;
+    transform: translateY(-1px);
+}
+.apply-filters-btn:active {
+    transform: translateY(0);
+}
+
+
+/* ---- Right Panel: Vehicle Grid Container ---- */
+.vehicle-grid-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.vehicle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+
+/* ---- Vehicle Card Redesign ---- */
+.vehicle-card {
+    background-color: #161a22;
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.vehicle-card:hover {
+    transform: translateY(-4px);
+}
+
+.v-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: #e2b761;
+    color: #000;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    z-index: 2;
+    text-transform: uppercase;
+}
+
+.v-image-container {
+    height: 180px;
+    background-color: #0f1117;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.v-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.img-placeholder {
+    color: #e2b761;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+.v-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.v-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #282c38;
+    padding-bottom: 10px;
+}
+
+.v-header-row h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+}
+
+.v-price-small {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #e2b761;
+    margin: 0;
+}
+
+/* Specs layout based on user screenshot */
+.v-specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-grow: 1;
+}
+
+.spec-val {
+    font-size: 12px;
+    color: #a0a6b5;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.spec-val span {
+    color: #e2b761;
+}
+
+/* Purchase Button */
+.purchase-btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #e2b761;
+    color: #e2b761;
+    padding: 10px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.purchase-btn:hover {
+    background-color: #e2b761;
+    color: #000;
+}
+
+/* ---- Loader and Error ---- */
+.gallery-loader, .gallery-error, .gallery-empty {
+    width: 100%;
+    padding: 40px;
+    text-align: center;
+    color: #7a7060;
+    font-size: 15px;
+}
+
+/* ---- Mobile Responsiveness ---- */
+@media (max-width: 900px) {
+    .gallery-content-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .filters-sidebar {
+        position: static;
+        margin-bottom: 24px;
+    }
+}
+
+
+/* ---- Inquiry Modal ---- */
+.inquiry-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10, 11, 15, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.inquiry-modal-content {
+    background-color: #161b27;
+    border: 1px solid #1e2130;
+    border-radius: 16px;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.inquiry-modal-content h3 {
+    color: #fff;
+    margin-top: 0;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+.inquiry-modal-content p {
+    color: #8a94a8;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.inq-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.inq-form-group label {
+    color: #c9a052;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.inq-form-group select,
+.inq-form-group textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #1e2130;
+    background-color: #0f1117;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+}
+.inq-form-group select:focus,
+.inq-form-group textarea:focus {
+    border-color: #c9a052;
+}
+
+.inq-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.inq-cancel {
+    padding: 10px 18px;
+    background: transparent;
+    border: 1px solid #4a5270;
+    color: #8a94a8;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+.inq-cancel:hover {
+    color: #fff;
+    border-color: #fff;
+}
+
+.inq-submit {
+    padding: 10px 24px;
+    background: #c9a052;
+    border: none;
+    color: #000;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+.inq-submit:hover:not(:disabled) {
+    background: #e0b96a;
+}
+.inq-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

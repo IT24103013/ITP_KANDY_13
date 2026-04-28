@@ -1,0 +1,466 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap');
+
+.vehicle-details-page {
+    padding: 50px 40px;
+    background-color: #f0ebe0;
+    min-height: calc(100vh - 58px);
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* ---- Header ---- */
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto 30px auto;
+}
+
+.details-header h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 4px 0;
+}
+
+.details-header h1 span {
+    color: #c9a052;
+}
+
+.details-header p {
+    margin: 0;
+    color: #7a7060;
+    font-size: 14px;
+}
+
+.back-btn {
+    padding: 10px 16px;
+    background: #fff;
+    border: 1px solid #d8d0c0;
+    border-radius: 8px;
+    color: #1a1a1a;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.back-btn:hover {
+    background: #1a1a1a;
+    color: #fff;
+    border-color: #1a1a1a;
+}
+
+/* ---- Grid Layout ---- */
+.details-grid-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+/* ---- Left Core Panel ---- */
+.details-core-panel {
+    background-color: #161a22;
+    border-radius: 16px;
+    padding: 30px;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.image-presentation {
+    width: 100%;
+    height: 350px;
+    background-color: #0f1117;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.placeholder-img {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 60px;
+    font-weight: 700;
+    color: #e2b761;
+    opacity: 0.8;
+}
+
+.core-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #282c38;
+    padding-bottom: 20px;
+}
+
+.title-block h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+}
+
+.title-block p {
+    color: #8a94a8;
+    margin: 0;
+    font-size: 14px;
+}
+
+.price-block {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.price-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #8a94a8;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.price-value {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #e2b761;
+}
+
+/* Specs Section */
+.tech-specs-section h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.spec-box {
+    background-color: #0f1117;
+    border: 1px solid #282c38;
+    padding: 16px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.spec-box label {
+    font-size: 10px;
+    color: #8a94a8;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.spec-box span {
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+}
+
+/* Description Section */
+.description-section h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+.description-box {
+    background-color: #0f1117;
+    border: 1px solid #282c38;
+    padding: 20px;
+    border-radius: 8px;
+    color: #a0a6b5;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Scan Report */
+.scan-report-btn {
+    width: 100%;
+    padding: 16px;
+    background-color: transparent;
+    border: 1px solid #4a5270;
+    color: #fff;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.scan-report-btn:hover:not(.disabled) {
+    border-color: #e2b761;
+    color: #e2b761;
+}
+
+.scan-report-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ---- Right Action Panel ---- */
+.details-action-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.action-card {
+    background-color: #161a22;
+    border-radius: 16px;
+    padding: 30px;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.action-icon {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.action-icon-small {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.primary-action h3 {
+    text-align: center;
+    font-size: 20px;
+    margin: 0 0 12px 0;
+}
+
+.primary-action p {
+    text-align: center;
+    color: #8a94a8;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+.buy-now-btn {
+    width: 100%;
+    padding: 16px;
+    background-color: #e2b761;
+    border: none;
+    border-radius: 8px;
+    color: #000;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.buy-now-btn:hover {
+    background-color: #c9a052;
+}
+
+.secondary-action h3 {
+    font-size: 16px;
+    margin: 0 0 16px 0;
+}
+
+.secondary-action textarea {
+    width: 100%;
+    background-color: #0f1117;
+    border: 1px solid #282c38;
+    border-radius: 8px;
+    padding: 14px;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    margin-bottom: 16px;
+    resize: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.secondary-action textarea:focus {
+    border-color: #e2b761;
+}
+
+.negotiate-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: transparent;
+    border: 1px solid #e2b761;
+    border-radius: 8px;
+    color: #e2b761;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.negotiate-btn:hover {
+    background-color: #e2b761;
+    color: #000;
+}
+
+/* Loader / Error */
+.detail-loader, .detail-error {
+    text-align: center;
+    padding: 100px 20px;
+    color: #7a7060;
+    font-size: 18px;
+    min-height: 60vh;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .details-grid-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .specs-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ---- Confirm Purchase Modal ---- */
+.buy-confirm-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10, 11, 15, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.buy-confirm-box {
+    background-color: #161a22;
+    border-radius: 20px;
+    padding: 40px;
+    width: 90%;
+    max-width: 480px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.confirm-icon-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #4a5270;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e2b761;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.buy-confirm-box h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 22px;
+    color: #fff;
+    margin: 0 0 10px 0;
+}
+
+.confirm-subtitle {
+    color: #e2b761;
+    font-size: 13px;
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+.confirm-subtitle span {
+    color: #fff;
+    font-weight: 600;
+}
+
+.confirm-price-box {
+    width: 100%;
+    border: 1px solid #282c38;
+    background-color: #0f1117;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.confirm-price-box .box-label {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.confirm-price-box .box-val {
+    font-family: 'Rajdhani', sans-serif;
+    color: #e2b761;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.confirm-disclaimer {
+    font-size: 10px;
+    color: #8a94a8;
+    text-align: left;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.confirm-purchase-btn {
+    width: 100%;
+    padding: 16px;
+    background-color: #e2b761;
+    border: none;
+    border-radius: 8px;
+    color: #000;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 15px;
+}
+
+.confirm-purchase-btn:hover {
+    background-color: #c9a052;
+}
+
+.cancel-confirm-btn {
+    background: transparent;
+    border: none;
+    color: #a0a6b5;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.cancel-confirm-btn:hover {
+    color: #fff;
+    text-decoration: underline;
+}

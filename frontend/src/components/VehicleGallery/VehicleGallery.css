@@ -1,0 +1,331 @@
+/* =============================================
+   VEHICLE GALLERY - DriveConnect Theme
+   Cream bg | Dark cards | Gold accents
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap');
+
+/* ---- Page Wrapper ---- */
+.gallery-layout {
+    padding: 52px 40px;
+    background-color: #f0ebe0;
+    min-height: calc(100vh - 58px);
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* ---- Header ---- */
+.gallery-header {
+    text-align: center;
+    margin-bottom: 48px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gallery-header h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.5px;
+    /* Remove old blue gradient */
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+}
+
+.gallery-header h1 span {
+    color: #c9a052;
+    font-weight: 600;
+}
+
+.gallery-header p {
+    color: #7a7060;
+    font-size: 15px;
+    margin: 0;
+}
+
+/* ---- Vehicle Grid ---- */
+.vehicle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ---- Vehicle Card ---- */
+.vehicle-card {
+    background-color: #0f1117;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid #1e2130;
+    position: relative;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.vehicle-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(201, 160, 82, 0.3);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.28);
+}
+
+/* Sale card variant */
+.sale-card:hover {
+    border-color: rgba(201, 160, 82, 0.45);
+    box-shadow: 0 20px 48px rgba(201, 160, 82, 0.12);
+}
+
+/* ---- Type Badge ---- */
+.v-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background-color: #c9a052;
+    color: #0a0b0f;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+/* ---- Image Placeholder ---- */
+.v-image-placeholder {
+    height: 200px;
+    background-color: #161b27;
+    border-bottom: 1px solid #1e2130;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---- Real Image Container ---- */
+.v-image-container {
+    height: 210px;
+    background-color: #161b27;
+    border-bottom: 1px solid #1e2130;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.v-image-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to top, #0f1117, transparent);
+    pointer-events: none;
+}
+
+.v-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.vehicle-card:hover .v-image {
+    transform: scale(1.07);
+}
+
+.img-icon {
+    font-size: 56px;
+    opacity: 0.18;
+    filter: none;
+}
+
+/* ---- Card Content ---- */
+.v-content {
+    padding: 20px 22px 22px;
+}
+
+.v-content h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    line-height: 1.2;
+}
+
+.v-year {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: #4a5270;
+    font-weight: 400;
+}
+
+/* ---- Price ---- */
+.v-price {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #c9a052;
+    margin-bottom: 0;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #1e2130;
+    line-height: 1.2;
+}
+
+.v-price span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: #4a5270;
+    font-weight: 400;
+}
+
+/* ---- Specs ---- */
+.v-specs {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0 0;
+    margin-bottom: 18px;
+    gap: 8px;
+    border-top: none;
+}
+
+.v-specs>*,
+.spec-item {
+    flex: 1;
+    background-color: #161b27;
+    border: 1px solid #1e2130;
+    padding: 8px 6px;
+    border-radius: 8px;
+    font-size: 11px;
+    color: #8a94a8;
+    font-weight: 500;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: border-color 0.2s;
+}
+
+.vehicle-card:hover .spec-item,
+.vehicle-card:hover .v-specs>* {
+    border-color: rgba(201, 160, 82, 0.15);
+}
+
+/* ---- Book Button ---- */
+.book-btn {
+    width: 100%;
+    padding: 13px;
+    border-radius: 10px;
+    border: none;
+    background-color: #c9a052;
+    color: #0a0b0f;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.book-btn:hover {
+    background-color: #e0b96a;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(201, 160, 82, 0.28);
+}
+
+.book-btn:active {
+    transform: translateY(0);
+}
+
+/* Sale button variant */
+.sale-btn {
+    background-color: #c9a052;
+}
+
+.sale-btn:hover {
+    background-color: #e0b96a;
+}
+
+/* ---- Loader ---- */
+.gallery-loader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    gap: 16px;
+    background-color: #f0ebe0;
+}
+
+.loader-spinner {
+    width: 38px;
+    height: 38px;
+    border: 3px solid #d8d0c0;
+    border-top-color: #c9a052;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loader-text {
+    font-size: 15px;
+    color: #7a7060;
+    font-weight: 500;
+}
+
+/* ---- Error ---- */
+.gallery-error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    gap: 12px;
+    background-color: #f0ebe0;
+    color: #f87171;
+    font-size: 15px;
+    text-align: center;
+    padding: 50px;
+}
+
+/* ---- Empty State ---- */
+.gallery-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 64px 24px;
+    color: #4a5270;
+    font-size: 15px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    .gallery-layout {
+        padding: 36px 20px;
+    }
+
+    .vehicle-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-header h1 {
+        font-size: 28px;
+    }
+}
