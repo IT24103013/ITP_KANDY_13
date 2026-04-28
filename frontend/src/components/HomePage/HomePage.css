@@ -1,6 +1,4 @@
-/* =============================================
-   HOME PAGE - DriveConnect Theme
-   ============================================= */
+/*HOME PAGE — DriveConnect Premium Theme */
 
 .home-container {
     display: flex;
@@ -10,69 +8,337 @@
     font-family: 'DM Sans', sans-serif;
 }
 
+/*HERO SECTION */
 .hero-section {
+    position: relative;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh;
-    padding: 20px;
+    padding: 100px 24px 80px;
+    text-align: center;
+    background-color: #f0ebe0;
+    /* Car image as a very subtle background */
+    background-image: url('/hero-bg.jpg');
+    background-size: cover;
+    background-position: center 40%;
+    background-repeat: no-repeat;
 }
 
-.action-buttons-container {
+/* Warm overlay that tones down the image to ~15% visibility */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(240, 235, 224, 0.88);
+    z-index: 0;
+}
+
+/* Subtle radial glow behind the title */
+.hero-glow {
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201, 160, 82, 0.18) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-inner {
+    position: relative;
+    max-width: 680px;
+    z-index: 2;
+}
+
+.hero-eyebrow {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c9a052;
+    margin-bottom: 18px;
+    padding: 5px 14px;
+    border: 1px solid rgba(201, 160, 82, 0.3);
+    border-radius: 20px;
+    background: rgba(201, 160, 82, 0.06);
+}
+
+.hero-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(52px, 8vw, 88px);
+    font-weight: 700;
+    color: #111318;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 22px;
+}
+
+.hero-title-gold {
+    color: #c9a052;
+}
+
+.hero-subtitle {
+    font-size: 16px;
+    line-height: 1.75;
+    color: #5a5e6b;
+    max-width: 520px;
+    margin: 0 auto 40px;
+    font-weight: 400;
+}
+
+/* CTA buttons */
+.hero-actions {
     display: flex;
-    gap: 40px;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .hero-btn {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    padding: 16px 40px;
-    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 13px 28px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    border: none;
+    transition: all 0.25s ease;
+    letter-spacing: 0.3px;
+}
+
+.hero-btn-primary {
+    background-color: #161b27;
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(22, 27, 39, 0.25);
+}
+
+.hero-btn-primary:hover {
+    background-color: #0d1019;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+}
+
+.hero-btn-outline {
+    background-color: transparent;
+    color: #161b27;
+    border: 1.5px solid #c0b8a8;
+}
+
+.hero-btn-outline:hover {
+    border-color: #c9a052;
+    color: #c9a052;
+    background-color: rgba(201, 160, 82, 0.06);
+}
+
+.btn-arrow {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.2s ease;
+}
+
+.hero-btn-primary:hover .btn-arrow {
+    transform: translateX(3px);
+}
+
+/* STATS BAR*/
+.stats-bar {
+    background-color: #111318;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    flex: 1;
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 24px;
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
+    transition: background 0.2s ease;
+}
+
+.stat-item:last-child {
+    border-right: none;
+}
+
+.stat-item:hover {
+    background-color: rgba(201, 160, 82, 0.05);
+}
+
+.stat-value {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #c9a052;
+    letter-spacing: 0.5px;
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.stat-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #8f94a5;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
 }
 
-.rent-btn {
-    background-color: #161b27;
-    color: #ffffff;
-    border: 2px solid #2a2f3e;
+/* FEATURES SECTION */
+.features-section {
+    background-color: #f0ebe0;
+    padding: 70px 40px 90px;
 }
 
-.rent-btn:hover {
-    background-color: #0f1117;
-    border-color: #c9a052;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-.buy-btn {
-    background-color: #161b27;
-    color: #ffffff;
-    border: 2px solid #2a2f3e;
-}
-
-.buy-btn:hover {
-    background-color: #0f1117;
-    border-color: #c9a052;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-.hero-divider {
-    height: 1px;
-    background-color: #38346e; /* A dark outline color simulating the pen sketch line */
-    background: linear-gradient(to right, transparent, #2a2f3e, transparent);
-    width: 90%;
+.features-grid {
+    max-width: 1100px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
 }
 
-.bottom-section {
-    flex: 1;
+/* Feature Card */
+.feature-card {
+    background-color: #161b27;
+    border-radius: 16px;
+    padding: 36px 32px 32px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
+    pointer-events: none;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.22);
+}
+
+.feature-card:hover::before {
+    border-color: rgba(201, 160, 82, 0.3);
+}
+
+/* Icon wrapper */
+.feature-icon-wrap {
+    width: 48px;
+    height: 48px;
+    background-color: rgba(201, 160, 82, 0.1);
+    border-radius: 12px;
+    display: flex;
     align-items: center;
-    padding: 40px;
+    justify-content: center;
+    color: #c9a052;
+    flex-shrink: 0;
+    transition: background-color 0.25s ease;
+}
+
+.feature-icon-wrap svg {
+    width: 22px;
+    height: 22px;
+}
+
+.feature-card:hover .feature-icon-wrap {
+    background-color: rgba(201, 160, 82, 0.18);
+}
+
+.feature-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #f0ebe0;
+    letter-spacing: 0.3px;
+    margin-top: 6px;
+}
+
+.feature-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #8f94a5;
+    flex: 1;
+}
+
+/* CTA link */
+.feature-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #c9a052;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    padding: 0;
+    margin-top: 6px;
+    transition: gap 0.2s ease, opacity 0.2s ease;
+}
+
+.feature-cta:hover {
+    opacity: 0.85;
+    gap: 10px;
+}
+
+.cta-arrow {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+}
+
+.feature-cta:hover .cta-arrow {
+    transform: translateX(3px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 70px 20px 60px;
+    }
+
+    .features-section {
+        padding: 50px 20px 70px;
+    }
+
+    .stats-bar {
+        gap: 0;
+    }
+
+    .stat-item {
+        flex: 1 1 50%;
+        border-right: 1px solid rgba(255, 255, 255, 0.07);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .stat-item:nth-child(2n) {
+        border-right: none;
+    }
 }
