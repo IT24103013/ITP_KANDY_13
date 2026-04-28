@@ -1,0 +1,108 @@
+/* =============================================
+   NAVBAR - DriveConnect Theme
+   Dark bg | Gold brand | Clean nav links
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=DM+Sans:wght@400;500&display=swap');
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0a0b0f;
+    padding: 0 48px;
+    height: 58px;
+    color: white;
+    border-bottom: 1px solid #1e2130;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ---- Brand ---- */
+.nav-brand {
+    display: flex;
+    align-items: center;
+}
+
+.brand-logo {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #c9a052;
+    text-decoration: none;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+}
+
+.brand-logo:hover {
+    color: #e0b96a;
+}
+
+/* ---- Nav Links ---- */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.nav-links li a {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #b0b8cc;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 7px 14px;
+    border-radius: 8px;
+    letter-spacing: 0.3px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-links li a:hover {
+    color: #ffffff;
+    background-color: #161b27;
+}
+
+.nav-links li a.active {
+    color: #c9a052;
+    background-color: rgba(201, 160, 82, 0.08);
+}
+
+/* ---- Nav Icons (decorative SVG) ---- */
+.nav-icon {
+    width: 15px;
+    height: 15px;
+    opacity: 0.75;
+    flex-shrink: 0;
+}
+
+.nav-links li a:hover .nav-icon {
+    opacity: 1;
+}
+
+/* ---- Login Button ---- */
+.login-btn {
+    border: 1px solid #c9a052;
+    background-color: transparent !important;
+    color: #c9a052 !important;
+    padding: 6px 18px !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 13px !important;
+}
+
+.login-btn:hover {
+    background-color: #c9a052 !important;
+    color: #0f1117 !important;
+}

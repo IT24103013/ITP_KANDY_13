@@ -1,0 +1,78 @@
+/* =============================================
+   HOME PAGE - DriveConnect Theme
+   ============================================= */
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 58px);
+    background-color: #f0ebe0;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    padding: 20px;
+}
+
+.action-buttons-container {
+    display: flex;
+    gap: 40px;
+}
+
+.hero-btn {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 16px 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.rent-btn {
+    background-color: #161b27;
+    color: #ffffff;
+    border: 2px solid #2a2f3e;
+}
+
+.rent-btn:hover {
+    background-color: #0f1117;
+    border-color: #c9a052;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.buy-btn {
+    background-color: #161b27;
+    color: #ffffff;
+    border: 2px solid #2a2f3e;
+}
+
+.buy-btn:hover {
+    background-color: #0f1117;
+    border-color: #c9a052;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.hero-divider {
+    height: 1px;
+    background-color: #38346e; /* A dark outline color simulating the pen sketch line */
+    background: linear-gradient(to right, transparent, #2a2f3e, transparent);
+    width: 90%;
+    margin: 0 auto;
+}
+
+.bottom-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}

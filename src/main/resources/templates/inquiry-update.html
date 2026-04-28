@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0f1015;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #d1d5db;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #1a1e27;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        .header {
+            background-color: #161a22;
+            padding: 30px;
+            text-align: center;
+            border-bottom: 2px solid #c9a052;
+        }
+        .header h1 {
+            color: #c9a052;
+            font-size: 24px;
+            letter-spacing: 2px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .content {
+            padding: 40px 30px;
+        }
+        .greeting {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .context-text {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .status-box {
+            background-color: #161a22;
+            border: 1px solid #282c38;
+            border-radius: 8px;
+            padding: 24px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .status-label {
+            font-size: 11px;
+            color: #8a94a8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .status-value {
+            color: #c9a052;
+            font-size: 22px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .message-box {
+            background-color: #161a22;
+            border-left: 4px solid #c9a052;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .message-label {
+            font-size: 11px;
+            color: #8a94a8;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .message-value {
+            color: #e5e7eb;
+            font-size: 14px;
+            font-style: italic;
+            line-height: 1.5;
+        }
+        .footer-text {
+            font-size: 14px;
+            color: #8a94a8;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+        .footer {
+            border-top: 1px solid #282c38;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h1>SAMARASINGHE MOTORS</h1>
+        </div>
+        
+        <div class="content">
+            <div class="greeting">Hello <span th:text="${customerName}">Customer</span>,</div>
+            
+            <div class="context-text">
+                There is an update regarding your recent inquiry for the <strong style="color: #fff;" th:text="${vehicleName}">Vehicle Name</strong>.
+            </div>
+            
+            <div class="status-box">
+                <div class="status-label">Current Status</div>
+                <div class="status-value" th:text="${status}">PENDING</div>
+            </div>
+            
+            <div class="message-box">
+                <div class="message-label">Message From Administration:</div>
+                <div class="message-value" th:text="'&quot;' + ${remarks} + '&quot;'">"Your message goes here"</div>
+            </div>
+            
+            <div class="footer-text">
+                If you have any questions, please reply directly to this email or visit our showroom.
+            </div>
+            
+            <div class="footer">
+                &copy; 2026 Samarasinghe Motors. All rights reserved.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

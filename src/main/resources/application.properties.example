@@ -1,0 +1,30 @@
+spring.application.name=vehicle-system
+
+# Security (Change these for production)
+vehicle.app.jwtSecret=YOUR_SECURE_JWT_SECRET_KEY
+vehicle.app.jwtExpirationMs=86400000
+
+# Database Configuration (Update with your database info)
+spring.datasource.url=jdbc:mysql://localhost:3306/your_db_name
+spring.datasource.username=YOUR_DB_USER
+spring.datasource.password=YOUR_DB_PASSWORD
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# Hibernate Configuration
+spring.jpa.hibernate.ddl-auto=validate
+spring.jpa.show-sql=true
+
+# Email Configuration (Update with your SMTP info)
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=YOUR_EMAIL@gmail.com
+spring.mail.password=YOUR_APP_PASSWORD
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+
+# Disable Open-In-View to release connections earlier
+spring.jpa.open-in-view=false
+# HikariCP Connection Pool Enhancements
+spring.datasource.hikari.maximum-pool-size=10
+spring.datasource.hikari.minimum-idle=2
+spring.datasource.hikari.connection-test-query=SELECT 1
