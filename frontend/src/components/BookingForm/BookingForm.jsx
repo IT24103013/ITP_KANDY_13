@@ -212,12 +212,6 @@ function BookingForm() {
                     <h1 className="car-title">{vehicle?.name}</h1>
                     <p className="car-subtitle">Premium {vehicle?.type} ℹ️</p>
 
-                    <div className="car-rating-row">
-                        <div className="rating-stars">★★★★★</div>
-                        <span className="rating-text">5.0 / 5</span>
-                        <div className="rating-divider" />
-                        <span className="rating-text">Verified Fleet</span>
-                    </div>
 
                     <div className="features-container">
                         <span className="feature-badge">🕹️ {vehicle?.gearType}</span>
@@ -355,7 +349,7 @@ function BookingForm() {
                                         <span>Rs. {vehicle.dailyRate?.toLocaleString()} × {costDetails.days} days</span>
                                         <span>Rs. {costDetails.total.toLocaleString()}</span>
                                     </div>
-                                    
+
                                     {discountDetails && (
                                         <div className="price-row discount-row">
                                             <span>Discount ({discountDetails.discountPercent}%)</span>
@@ -366,16 +360,16 @@ function BookingForm() {
                                     {/* Promo Code Input Section */}
                                     <div className="promo-section">
                                         <div className="promo-input-group">
-                                            <input 
-                                                type="text" 
-                                                className="form-input promo-input" 
+                                            <input
+                                                type="text"
+                                                className="form-input promo-input"
                                                 placeholder="Enter Promo Code"
                                                 value={promoCode}
                                                 onChange={(e) => setPromoCode(e.target.value.toUpperCase())}
                                                 disabled={discountDetails}
                                             />
-                                            <button 
-                                                type="button" 
+                                            <button
+                                                type="button"
                                                 className="promo-apply-btn"
                                                 onClick={handleApplyPromo}
                                                 disabled={isApplyingPromo || discountDetails || !promoCode}
@@ -388,7 +382,7 @@ function BookingForm() {
                                     </div>
 
                                     <hr className="price-divider" />
-                                    
+
                                     <div className="price-row total-row">
                                         <span>Total Fee</span>
                                         <div style={{ display: 'flex', alignItems: 'center' }}>
