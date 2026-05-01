@@ -32,7 +32,7 @@ public class VehicleService {
     private VehicleImageRepository vehicleImageRepository;
 
     // Define the directory based on user requirements
-    private static final String IMAGE_UPLOAD_DIR = "/home/d3e1c4/Music/Version/vehicle-system/frontend/public/images/";
+    private static final String IMAGE_UPLOAD_DIR = "/home/d3e1c4/Music/Version/ITP_KANDY_13/frontend/public/images/";
 
     public List<VehicleRent> getAllVehiclesForRent() {
         return vehicleRentRepository.findAllWithImages();
